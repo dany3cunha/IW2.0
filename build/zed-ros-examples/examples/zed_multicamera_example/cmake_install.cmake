@@ -1,8 +1,8 @@
-# Install script for directory: /home/pc/catkin_ws/src/zed-ros-examples/examples/zed_multicamera_example
+# Install script for directory: /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/examples/zed_multicamera_example
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/pc/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/pc/Documents/GitHub/IW2.0/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,21 +43,21 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/catkin_ws/build/zed-ros-examples/examples/zed_multicamera_example/catkin_generated/installspace/zed_multicamera_example.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_multicamera_example/catkin_generated/installspace/zed_multicamera_example.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_multicamera_example/cmake" TYPE FILE FILES
-    "/home/pc/catkin_ws/build/zed-ros-examples/examples/zed_multicamera_example/catkin_generated/installspace/zed_multicamera_exampleConfig.cmake"
-    "/home/pc/catkin_ws/build/zed-ros-examples/examples/zed_multicamera_example/catkin_generated/installspace/zed_multicamera_exampleConfig-version.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_multicamera_example/catkin_generated/installspace/zed_multicamera_exampleConfig.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_multicamera_example/catkin_generated/installspace/zed_multicamera_exampleConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_multicamera_example" TYPE FILE FILES "/home/pc/catkin_ws/src/zed-ros-examples/examples/zed_multicamera_example/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_multicamera_example" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/examples/zed_multicamera_example/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_multicamera_example" TYPE DIRECTORY FILES "/home/pc/catkin_ws/src/zed-ros-examples/examples/zed_multicamera_example/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_multicamera_example" TYPE DIRECTORY FILES "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/examples/zed_multicamera_example/launch")
 endif()
 

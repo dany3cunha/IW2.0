@@ -1,7 +1,7 @@
 zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/rgbd_sensors_sync_nodelet/src/rgbd_sensor_sync.cpp.o: \
- /home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/src/rgbd_sensors_sync_nodelet/src/rgbd_sensor_sync.cpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/src/rgbd_sensors_sync_nodelet/src/rgbd_sensor_sync.cpp \
  /usr/include/stdc-predef.h \
- /home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/src/rgbd_sensors_sync_nodelet/include/rgbd_sensor_sync.hpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/src/rgbd_sensors_sync_nodelet/include/rgbd_sensor_sync.hpp \
  /opt/ros/melodic/include/nodelet/nodelet.h \
  /opt/ros/melodic/include/nodelet/exception.h \
  /usr/include/c++/7/stdexcept /usr/include/c++/7/exception \
@@ -1239,7 +1239,7 @@ zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/rgbd_sensors_sync_no
  /opt/ros/melodic/include/image_transport/camera_subscriber.h \
  /opt/ros/melodic/include/image_transport/subscriber_filter.h \
  /opt/ros/melodic/include/message_filters/simple_filter.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/RGBDSensors.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/RGBDSensors.h \
  /opt/ros/melodic/include/pluginlib/class_list_macros.h \
  /opt/ros/melodic/include/pluginlib/./class_list_macros.hpp \
  /opt/ros/melodic/include/class_loader/class_loader.hpp \

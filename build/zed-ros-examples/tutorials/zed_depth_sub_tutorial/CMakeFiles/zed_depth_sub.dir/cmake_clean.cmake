@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/zed_depth_sub_tutorial/zed_depth_sub"
-  "/home/pc/catkin_ws/devel/lib/zed_depth_sub_tutorial/zed_depth_sub.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_depth_sub_tutorial/zed_depth_sub"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_depth_sub_tutorial/zed_depth_sub.pdb"
   "CMakeFiles/zed_depth_sub.dir/src/zed_depth_sub_tutorial.cpp.o"
   "CMakeFiles/zed_depth_sub.dir/src/zed_depth_sub_tutorial.cpp.o.d"
 )

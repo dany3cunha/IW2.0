@@ -1,4 +1,4 @@
-prefix=/home/pc/catkin_ws/devel
+prefix=/home/pc/Documents/GitHub/IW2.0/devel
 
 Name: rviz_plugin_zed_od
 Description: Description of rviz_plugin_zed_od

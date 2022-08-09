@@ -53,10 +53,10 @@ RM = /home/pc/.local/lib/python3.6/site-packages/cmake/data/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pc/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/pc/Documents/GitHub/IW2.0/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pc/catkin_ws/build
+CMAKE_BINARY_DIR = /home/pc/Documents/GitHub/IW2.0/build
 
 # Utility rule file for tf2_msgs_generate_messages_lisp.
 
@@ -74,10 +74,10 @@ zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.d
 .PHONY : zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/build
 
 zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/clean:
-	cd /home/pc/catkin_ws/build/zed-ros-examples/rviz-plugin-zed-od && $(CMAKE_COMMAND) -P CMakeFiles/tf2_msgs_generate_messages_lisp.dir/cmake_clean.cmake
+	cd /home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/rviz-plugin-zed-od && $(CMAKE_COMMAND) -P CMakeFiles/tf2_msgs_generate_messages_lisp.dir/cmake_clean.cmake
 .PHONY : zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/clean
 
 zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/depend:
-	cd /home/pc/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pc/catkin_ws/src /home/pc/catkin_ws/src/zed-ros-examples/rviz-plugin-zed-od /home/pc/catkin_ws/build /home/pc/catkin_ws/build/zed-ros-examples/rviz-plugin-zed-od /home/pc/catkin_ws/build/zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pc/Documents/GitHub/IW2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pc/Documents/GitHub/IW2.0/src /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/rviz-plugin-zed-od /home/pc/Documents/GitHub/IW2.0/build /home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/rviz-plugin-zed-od /home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : zed-ros-examples/rviz-plugin-zed-od/CMakeFiles/tf2_msgs_generate_messages_lisp.dir/depend
 

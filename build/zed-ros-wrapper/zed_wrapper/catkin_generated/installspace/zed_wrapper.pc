@@ -1,4 +1,4 @@
-prefix=/home/pc/catkin_ws/install
+prefix=/home/pc/Documents/GitHub/IW2.0/install
 
 Name: zed_wrapper
 Description: Description of zed_wrapper

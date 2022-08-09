@@ -357,35 +357,35 @@ int whitebalance_temperature;
 
 
 
-//#line 9 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 9 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       double pub_frame_rate;
-//#line 12 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 12 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int depth_confidence;
-//#line 13 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 13 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int depth_texture_conf;
-//#line 14 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 14 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       double point_cloud_freq;
-//#line 17 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 17 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int brightness;
-//#line 18 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 18 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int contrast;
-//#line 19 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 19 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int hue;
-//#line 20 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 20 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int saturation;
-//#line 21 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 21 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int sharpness;
-//#line 22 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 22 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int gamma;
-//#line 23 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 23 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       bool auto_exposure_gain;
-//#line 24 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 24 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int gain;
-//#line 25 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 25 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int exposure;
-//#line 26 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 26 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       bool auto_whitebalance;
-//#line 27 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 27 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       int whitebalance_temperature;
 //#line 228 "/opt/ros/melodic/share/dynamic_reconfigure/cmake/../templates/ConfigType.h.template"
 
@@ -526,15 +526,15 @@ int whitebalance_temperature;
     {
 ZedConfig::GroupDescription<ZedConfig::DEFAULT, ZedConfig> Default("Default", "", 0, 0, true, &ZedConfig::groups);
 ZedConfig::GroupDescription<ZedConfig::DEFAULT::GENERAL, ZedConfig::DEFAULT> general("general", "", 0, 1, true, &ZedConfig::DEFAULT::general);
-//#line 9 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 9 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.pub_frame_rate = 0.1;
-//#line 9 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 9 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.pub_frame_rate = 60.0;
-//#line 9 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 9 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.pub_frame_rate = 15.0;
-//#line 9 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 9 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       general.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<double>("pub_frame_rate", "double", 0, "Video and Depth data frequency", "", &ZedConfig::pub_frame_rate)));
-//#line 9 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 9 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<double>("pub_frame_rate", "double", 0, "Video and Depth data frequency", "", &ZedConfig::pub_frame_rate)));
 //#line 124 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       general.convertParams();
@@ -543,35 +543,35 @@ ZedConfig::GroupDescription<ZedConfig::DEFAULT::GENERAL, ZedConfig::DEFAULT> gen
 //#line 124 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __group_descriptions__.push_back(ZedConfig::AbstractGroupDescriptionConstPtr(new ZedConfig::GroupDescription<ZedConfig::DEFAULT::GENERAL, ZedConfig::DEFAULT>(general)));
 ZedConfig::GroupDescription<ZedConfig::DEFAULT::DEPTH, ZedConfig::DEFAULT> depth("depth", "", 0, 2, true, &ZedConfig::DEFAULT::depth);
-//#line 12 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 12 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.depth_confidence = 1;
-//#line 12 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 12 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.depth_confidence = 100;
-//#line 12 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 12 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.depth_confidence = 50;
-//#line 12 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 12 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       depth.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("depth_confidence", "int", 1, "Depth confidence threshold", "", &ZedConfig::depth_confidence)));
-//#line 12 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 12 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("depth_confidence", "int", 1, "Depth confidence threshold", "", &ZedConfig::depth_confidence)));
-//#line 13 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 13 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.depth_texture_conf = 1;
-//#line 13 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 13 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.depth_texture_conf = 100;
-//#line 13 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 13 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.depth_texture_conf = 100;
-//#line 13 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 13 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       depth.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("depth_texture_conf", "int", 2, "Texture confidence threshold", "", &ZedConfig::depth_texture_conf)));
-//#line 13 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 13 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("depth_texture_conf", "int", 2, "Texture confidence threshold", "", &ZedConfig::depth_texture_conf)));
-//#line 14 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 14 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.point_cloud_freq = 0.1;
-//#line 14 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 14 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.point_cloud_freq = 60.0;
-//#line 14 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 14 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.point_cloud_freq = 15.0;
-//#line 14 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 14 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       depth.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<double>("point_cloud_freq", "double", 3, "Point cloud frequency", "", &ZedConfig::point_cloud_freq)));
-//#line 14 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 14 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<double>("point_cloud_freq", "double", 3, "Point cloud frequency", "", &ZedConfig::point_cloud_freq)));
 //#line 124 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       depth.convertParams();
@@ -580,115 +580,115 @@ ZedConfig::GroupDescription<ZedConfig::DEFAULT::DEPTH, ZedConfig::DEFAULT> depth
 //#line 124 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       __group_descriptions__.push_back(ZedConfig::AbstractGroupDescriptionConstPtr(new ZedConfig::GroupDescription<ZedConfig::DEFAULT::DEPTH, ZedConfig::DEFAULT>(depth)));
 ZedConfig::GroupDescription<ZedConfig::DEFAULT::VIDEO, ZedConfig::DEFAULT> video("video", "", 0, 3, true, &ZedConfig::DEFAULT::video);
-//#line 17 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 17 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.brightness = 0;
-//#line 17 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 17 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.brightness = 8;
-//#line 17 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 17 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.brightness = 4;
-//#line 17 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 17 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("brightness", "int", 4, "Defines the brightness control", "", &ZedConfig::brightness)));
-//#line 17 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 17 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("brightness", "int", 4, "Defines the brightness control", "", &ZedConfig::brightness)));
-//#line 18 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 18 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.contrast = 0;
-//#line 18 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 18 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.contrast = 8;
-//#line 18 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 18 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.contrast = 4;
-//#line 18 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 18 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("contrast", "int", 5, "Defines the contrast control", "", &ZedConfig::contrast)));
-//#line 18 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 18 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("contrast", "int", 5, "Defines the contrast control", "", &ZedConfig::contrast)));
-//#line 19 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 19 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.hue = 0;
-//#line 19 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 19 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.hue = 11;
-//#line 19 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 19 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.hue = 0;
-//#line 19 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 19 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("hue", "int", 6, "Defines the hue control", "", &ZedConfig::hue)));
-//#line 19 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 19 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("hue", "int", 6, "Defines the hue control", "", &ZedConfig::hue)));
-//#line 20 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 20 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.saturation = 0;
-//#line 20 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 20 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.saturation = 8;
-//#line 20 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 20 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.saturation = 4;
-//#line 20 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 20 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("saturation", "int", 7, "Defines the saturation control", "", &ZedConfig::saturation)));
-//#line 20 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 20 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("saturation", "int", 7, "Defines the saturation control", "", &ZedConfig::saturation)));
-//#line 21 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 21 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.sharpness = 0;
-//#line 21 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 21 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.sharpness = 8;
-//#line 21 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 21 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.sharpness = 4;
-//#line 21 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 21 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("sharpness", "int", 8, "Defines the digital sharpness control", "", &ZedConfig::sharpness)));
-//#line 21 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 21 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("sharpness", "int", 8, "Defines the digital sharpness control", "", &ZedConfig::sharpness)));
-//#line 22 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 22 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.gamma = 1;
-//#line 22 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 22 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.gamma = 9;
-//#line 22 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 22 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.gamma = 8;
-//#line 22 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 22 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("gamma", "int", 9, "Defines the gamma control", "", &ZedConfig::gamma)));
-//#line 22 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 22 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("gamma", "int", 9, "Defines the gamma control", "", &ZedConfig::gamma)));
-//#line 23 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 23 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.auto_exposure_gain = 0;
-//#line 23 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 23 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.auto_exposure_gain = 1;
-//#line 23 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 23 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.auto_exposure_gain = 1;
-//#line 23 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 23 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<bool>("auto_exposure_gain", "bool", 10, "Defines if the Gain and Exposure are in automatic mode or not", "", &ZedConfig::auto_exposure_gain)));
-//#line 23 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 23 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<bool>("auto_exposure_gain", "bool", 10, "Defines if the Gain and Exposure are in automatic mode or not", "", &ZedConfig::auto_exposure_gain)));
-//#line 24 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 24 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.gain = 0;
-//#line 24 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 24 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.gain = 100;
-//#line 24 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 24 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.gain = 100;
-//#line 24 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 24 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("gain", "int", 11, "Defines the gain control", "", &ZedConfig::gain)));
-//#line 24 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 24 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("gain", "int", 11, "Defines the gain control", "", &ZedConfig::gain)));
-//#line 25 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 25 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.exposure = 0;
-//#line 25 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 25 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.exposure = 100;
-//#line 25 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 25 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.exposure = 100;
-//#line 25 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 25 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("exposure", "int", 12, "Defines the exposure control", "", &ZedConfig::exposure)));
-//#line 25 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 25 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("exposure", "int", 12, "Defines the exposure control", "", &ZedConfig::exposure)));
-//#line 26 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 26 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.auto_whitebalance = 0;
-//#line 26 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 26 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.auto_whitebalance = 1;
-//#line 26 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 26 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.auto_whitebalance = 1;
-//#line 26 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 26 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<bool>("auto_whitebalance", "bool", 13, "Defines if the White balance is in automatic mode or not", "", &ZedConfig::auto_whitebalance)));
-//#line 26 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 26 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<bool>("auto_whitebalance", "bool", 13, "Defines if the White balance is in automatic mode or not", "", &ZedConfig::auto_whitebalance)));
-//#line 27 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 27 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __min__.whitebalance_temperature = 28;
-//#line 27 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 27 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __max__.whitebalance_temperature = 65;
-//#line 27 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 27 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __default__.whitebalance_temperature = 42;
-//#line 27 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 27 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       video.abstract_parameters.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("whitebalance_temperature", "int", 14, "Defines the color temperature value (x100)", "", &ZedConfig::whitebalance_temperature)));
-//#line 27 "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
+//#line 27 "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/cfg/Zed.cfg"
       __param_descriptions__.push_back(ZedConfig::AbstractParamDescriptionConstPtr(new ZedConfig::ParamDescription<int>("whitebalance_temperature", "int", 14, "Defines the color temperature value (x100)", "", &ZedConfig::whitebalance_temperature)));
 //#line 124 "/opt/ros/melodic/lib/python2.7/dist-packages/dynamic_reconfigure/parameter_generator_catkin.py"
       video.convertParams();

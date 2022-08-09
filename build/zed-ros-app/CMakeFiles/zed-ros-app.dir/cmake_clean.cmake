@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/zed-ros-app/zed-ros-app"
-  "/home/pc/catkin_ws/devel/lib/zed-ros-app/zed-ros-app.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed-ros-app/zed-ros-app"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed-ros-app/zed-ros-app.pdb"
   "CMakeFiles/zed-ros-app.dir/src/main.cpp.o"
   "CMakeFiles/zed-ros-app.dir/src/main.cpp.o.d"
 )

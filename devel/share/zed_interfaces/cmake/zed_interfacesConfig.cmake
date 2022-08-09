@@ -67,14 +67,14 @@ set(zed_interfaces_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(zed_interfaces_SOURCE_PREFIX /home/pc/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces)
-  set(zed_interfaces_DEVEL_PREFIX /home/pc/catkin_ws/devel)
+  set(zed_interfaces_SOURCE_PREFIX /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed-ros-interfaces)
+  set(zed_interfaces_DEVEL_PREFIX /home/pc/Documents/GitHub/IW2.0/devel)
   set(zed_interfaces_INSTALL_PREFIX "")
   set(zed_interfaces_PREFIX ${zed_interfaces_DEVEL_PREFIX})
 else()
   set(zed_interfaces_SOURCE_PREFIX "")
   set(zed_interfaces_DEVEL_PREFIX "")
-  set(zed_interfaces_INSTALL_PREFIX /home/pc/catkin_ws/install)
+  set(zed_interfaces_INSTALL_PREFIX /home/pc/Documents/GitHub/IW2.0/install)
   set(zed_interfaces_PREFIX ${zed_interfaces_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(zed_interfaces_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/pc/catkin_ws/devel/include;/home/pc/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces/include " STREQUAL " ")
+if(NOT "/home/pc/Documents/GitHub/IW2.0/devel/include;/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed-ros-interfaces/include " STREQUAL " ")
   set(zed_interfaces_INCLUDE_DIRS "")
-  set(_include_dirs "/home/pc/catkin_ws/devel/include;/home/pc/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces/include")
+  set(_include_dirs "/home/pc/Documents/GitHub/IW2.0/devel/include;/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed-ros-interfaces/include")
   if(NOT "https://github.com/stereolabs/zed-ros-wrapper/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/stereolabs/zed-ros-wrapper/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://stereolabs.com/ " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/pc/catkin_ws/devel/include;/home/pc/catkin_ws/src/zed-ros-wrapper/
         message(FATAL_ERROR "Project 'zed_interfaces' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'zed_interfaces' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/pc/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'zed_interfaces' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed-ros-interfaces/${idir}'.  ${_report}")
     endif()
     _list_append_unique(zed_interfaces_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/pc/catkin_ws/devel/lib;/opt/ros/melodic/lib)
+    foreach(path /home/pc/Documents/GitHub/IW2.0/devel/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

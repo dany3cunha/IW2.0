@@ -128,7 +128,7 @@ int main(int argc, char **argv)
             // Retrieve image in GPU memory
             if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
             {
-                adjustCameraExposure(image_ocv);
+                adjustCameraExposure(image_ocv,exposure);
                 // Update pose data (used for projection of the mesh over the current image)
                 tracking_state = zed.getPosition(pose);
 
@@ -207,7 +207,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void adjustCameraExposure(cv::Mat cv_image)
+void adjustCameraExposure(cv::Mat cv_image, int &exposure)
 {
 
     cv::Mat hsv;

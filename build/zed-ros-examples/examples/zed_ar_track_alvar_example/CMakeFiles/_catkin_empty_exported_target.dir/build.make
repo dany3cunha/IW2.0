@@ -53,10 +53,10 @@ RM = /home/pc/.local/lib/python3.6/site-packages/cmake/data/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pc/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/pc/Documents/GitHub/IW2.0/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pc/catkin_ws/build
+CMAKE_BINARY_DIR = /home/pc/Documents/GitHub/IW2.0/build
 
 # Utility rule file for _catkin_empty_exported_target.
 
@@ -74,10 +74,10 @@ zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_ex
 .PHONY : zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/build
 
 zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/clean:
-	cd /home/pc/catkin_ws/build/zed-ros-examples/examples/zed_ar_track_alvar_example && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
+	cd /home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_ar_track_alvar_example && $(CMAKE_COMMAND) -P CMakeFiles/_catkin_empty_exported_target.dir/cmake_clean.cmake
 .PHONY : zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/clean
 
 zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/depend:
-	cd /home/pc/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pc/catkin_ws/src /home/pc/catkin_ws/src/zed-ros-examples/examples/zed_ar_track_alvar_example /home/pc/catkin_ws/build /home/pc/catkin_ws/build/zed-ros-examples/examples/zed_ar_track_alvar_example /home/pc/catkin_ws/build/zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pc/Documents/GitHub/IW2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pc/Documents/GitHub/IW2.0/src /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/examples/zed_ar_track_alvar_example /home/pc/Documents/GitHub/IW2.0/build /home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_ar_track_alvar_example /home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : zed-ros-examples/examples/zed_ar_track_alvar_example/CMakeFiles/_catkin_empty_exported_target.dir/depend
 

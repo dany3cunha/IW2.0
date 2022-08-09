@@ -39,4 +39,4 @@ cv::Mat slMat2cvMat(sl::Mat &input);
  * @return int 
  */
 int getOCVtype(sl::MAT_TYPE type);
-void adjustCameraExposure(cv::Mat cv_image);
+void adjustCameraExposure(cv::Mat cv_image, int &exposure);

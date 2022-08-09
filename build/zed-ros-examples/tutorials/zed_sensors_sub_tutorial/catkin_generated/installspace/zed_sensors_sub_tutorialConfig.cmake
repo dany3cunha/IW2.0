@@ -67,14 +67,14 @@ set(zed_sensors_sub_tutorial_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("FALSE" STREQUAL "TRUE")
-  set(zed_sensors_sub_tutorial_SOURCE_PREFIX /home/pc/catkin_ws/src/zed-ros-examples/tutorials/zed_sensors_sub_tutorial)
-  set(zed_sensors_sub_tutorial_DEVEL_PREFIX /home/pc/catkin_ws/devel)
+  set(zed_sensors_sub_tutorial_SOURCE_PREFIX /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/tutorials/zed_sensors_sub_tutorial)
+  set(zed_sensors_sub_tutorial_DEVEL_PREFIX /home/pc/Documents/GitHub/IW2.0/devel)
   set(zed_sensors_sub_tutorial_INSTALL_PREFIX "")
   set(zed_sensors_sub_tutorial_PREFIX ${zed_sensors_sub_tutorial_DEVEL_PREFIX})
 else()
   set(zed_sensors_sub_tutorial_SOURCE_PREFIX "")
   set(zed_sensors_sub_tutorial_DEVEL_PREFIX "")
-  set(zed_sensors_sub_tutorial_INSTALL_PREFIX /home/pc/catkin_ws/install)
+  set(zed_sensors_sub_tutorial_INSTALL_PREFIX /home/pc/Documents/GitHub/IW2.0/install)
   set(zed_sensors_sub_tutorial_PREFIX ${zed_sensors_sub_tutorial_INSTALL_PREFIX})
 endif()
 
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/pc/catkin_ws/install/lib;/opt/ros/melodic/lib)
+    foreach(path /home/pc/Documents/GitHub/IW2.0/install/lib;/opt/ros/melodic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

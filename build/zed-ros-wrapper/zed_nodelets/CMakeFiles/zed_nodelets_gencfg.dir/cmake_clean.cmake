@@ -1,9 +1,9 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/include/zed_nodelets/ZedConfig.h"
-  "/home/pc/catkin_ws/devel/lib/python2.7/dist-packages/zed_nodelets/cfg/ZedConfig.py"
-  "/home/pc/catkin_ws/devel/share/zed_nodelets/docs/ZedConfig-usage.dox"
-  "/home/pc/catkin_ws/devel/share/zed_nodelets/docs/ZedConfig.dox"
-  "/home/pc/catkin_ws/devel/share/zed_nodelets/docs/ZedConfig.wikidoc"
+  "/home/pc/Documents/GitHub/IW2.0/devel/include/zed_nodelets/ZedConfig.h"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/python2.7/dist-packages/zed_nodelets/cfg/ZedConfig.py"
+  "/home/pc/Documents/GitHub/IW2.0/devel/share/zed_nodelets/docs/ZedConfig-usage.dox"
+  "/home/pc/Documents/GitHub/IW2.0/devel/share/zed_nodelets/docs/ZedConfig.dox"
+  "/home/pc/Documents/GitHub/IW2.0/devel/share/zed_nodelets/docs/ZedConfig.wikidoc"
   "CMakeFiles/zed_nodelets_gencfg"
 )
 

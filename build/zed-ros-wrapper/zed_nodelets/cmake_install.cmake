@@ -1,8 +1,8 @@
-# Install script for directory: /home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets
+# Install script for directory: /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/pc/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/pc/Documents/GitHub/IW2.0/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,34 +43,34 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/zed_nodelets" TYPE FILE FILES "/home/pc/catkin_ws/devel/include/zed_nodelets/ZedConfig.h")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/include/zed_nodelets" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/devel/include/zed_nodelets/ZedConfig.h")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/zed_nodelets" TYPE FILE FILES "/home/pc/catkin_ws/devel/lib/python2.7/dist-packages/zed_nodelets/__init__.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/zed_nodelets" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/devel/lib/python2.7/dist-packages/zed_nodelets/__init__.py")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/pc/catkin_ws/devel/lib/python2.7/dist-packages/zed_nodelets/cfg")
+  execute_process(COMMAND "/usr/bin/python2" -m compileall "/home/pc/Documents/GitHub/IW2.0/devel/lib/python2.7/dist-packages/zed_nodelets/cfg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/zed_nodelets" TYPE DIRECTORY FILES "/home/pc/catkin_ws/devel/lib/python2.7/dist-packages/zed_nodelets/cfg")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/python2.7/dist-packages/zed_nodelets" TYPE DIRECTORY FILES "/home/pc/Documents/GitHub/IW2.0/devel/lib/python2.7/dist-packages/zed_nodelets/cfg")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/catkin_ws/build/zed-ros-wrapper/zed_nodelets/catkin_generated/installspace/zed_nodelets.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-wrapper/zed_nodelets/catkin_generated/installspace/zed_nodelets.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_nodelets/cmake" TYPE FILE FILES
-    "/home/pc/catkin_ws/build/zed-ros-wrapper/zed_nodelets/catkin_generated/installspace/zed_nodeletsConfig.cmake"
-    "/home/pc/catkin_ws/build/zed-ros-wrapper/zed_nodelets/catkin_generated/installspace/zed_nodeletsConfig-version.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-wrapper/zed_nodelets/catkin_generated/installspace/zed_nodeletsConfig.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-wrapper/zed_nodelets/catkin_generated/installspace/zed_nodeletsConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_nodelets" TYPE FILE FILES "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_nodelets" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -80,7 +80,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libZEDNodelets.so"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/pc/catkin_ws/devel/lib/libZEDNodelets.so")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib" TYPE SHARED_LIBRARY FILES "/home/pc/Documents/GitHub/IW2.0/devel/lib/libZEDNodelets.so")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libZEDNodelets.so" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/libZEDNodelets.so")
     file(RPATH_CHANGE
@@ -97,6 +97,6 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_nodelets" TYPE FILE FILES "/home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/nodelet_plugins.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_nodelets" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/nodelet_plugins.xml")
 endif()
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/zed_sensors_sub_tutorial/zed_sensors_sub"
-  "/home/pc/catkin_ws/devel/lib/zed_sensors_sub_tutorial/zed_sensors_sub.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_sensors_sub_tutorial/zed_sensors_sub"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_sensors_sub_tutorial/zed_sensors_sub.pdb"
   "CMakeFiles/zed_sensors_sub.dir/src/zed_sensors_sub_tutorial.cpp.o"
   "CMakeFiles/zed_sensors_sub.dir/src/zed_sensors_sub_tutorial.cpp.o.d"
 )

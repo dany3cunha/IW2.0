@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "zed-ros-app"
-PROJECT_SPACE_DIR = "/home/pc/catkin_ws/install"
+PROJECT_SPACE_DIR = "/home/pc/Documents/GitHub/IW2.0/install"
 PROJECT_VERSION = "3.0.0"

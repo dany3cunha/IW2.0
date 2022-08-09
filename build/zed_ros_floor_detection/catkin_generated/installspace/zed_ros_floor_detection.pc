@@ -1,4 +1,4 @@
-prefix=/home/pc/catkin_ws/install
+prefix=/home/pc/Documents/GitHub/IW2.0/install
 
 Name: zed_ros_floor_detection
 Description: Description of zed_ros_floor_detection

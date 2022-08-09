@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/zed_obj_det_sub_tutorial/zed_obj_det_sub"
-  "/home/pc/catkin_ws/devel/lib/zed_obj_det_sub_tutorial/zed_obj_det_sub.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_obj_det_sub_tutorial/zed_obj_det_sub"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_obj_det_sub_tutorial/zed_obj_det_sub.pdb"
   "CMakeFiles/zed_obj_det_sub.dir/src/zed_obj_det_sub_tutorial.cpp.o"
   "CMakeFiles/zed_obj_det_sub.dir/src/zed_obj_det_sub_tutorial.cpp.o.d"
 )

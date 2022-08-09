@@ -1,7 +1,7 @@
 zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o: \
- /home/pc/catkin_ws/src/zed-ros-app/src/main.cpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-app/src/main.cpp \
  /usr/include/stdc-predef.h \
- /home/pc/catkin_ws/src/zed-ros-app/include/headers.hpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-app/include/headers.hpp \
  /opt/ros/melodic/include/ros/ros.h /opt/ros/melodic/include/ros/time.h \
  /opt/ros/melodic/include/ros/platform.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/cstdlib \
@@ -987,7 +987,7 @@ zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o: \
  /opt/ros/melodic/include/geometry_msgs/Quaternion.h \
  /opt/ros/melodic/include/geometry_msgs/Vector3.h \
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/PlaneStamped.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/PlaneStamped.h \
  /opt/ros/melodic/include/shape_msgs/Mesh.h \
  /opt/ros/melodic/include/shape_msgs/MeshTriangle.h \
  /opt/ros/melodic/include/shape_msgs/Plane.h \

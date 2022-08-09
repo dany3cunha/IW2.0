@@ -1,8 +1,8 @@
-# Install script for directory: /home/pc/catkin_ws/src/zed_ros_floor_detection
+# Install script for directory: /home/pc/Documents/GitHub/IW2.0/src/zed_ros_floor_detection
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/pc/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/pc/Documents/GitHub/IW2.0/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,17 +43,17 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/catkin_ws/build/zed_ros_floor_detection/catkin_generated/installspace/zed_ros_floor_detection.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/build/zed_ros_floor_detection/catkin_generated/installspace/zed_ros_floor_detection.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_ros_floor_detection/cmake" TYPE FILE FILES
-    "/home/pc/catkin_ws/build/zed_ros_floor_detection/catkin_generated/installspace/zed_ros_floor_detectionConfig.cmake"
-    "/home/pc/catkin_ws/build/zed_ros_floor_detection/catkin_generated/installspace/zed_ros_floor_detectionConfig-version.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed_ros_floor_detection/catkin_generated/installspace/zed_ros_floor_detectionConfig.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed_ros_floor_detection/catkin_generated/installspace/zed_ros_floor_detectionConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_ros_floor_detection" TYPE FILE FILES "/home/pc/catkin_ws/src/zed_ros_floor_detection/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_ros_floor_detection" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/src/zed_ros_floor_detection/package.xml")
 endif()
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/zed_ros_floor_detection/zed_ros_floor_detection"
-  "/home/pc/catkin_ws/devel/lib/zed_ros_floor_detection/zed_ros_floor_detection.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_ros_floor_detection/zed_ros_floor_detection"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_ros_floor_detection/zed_ros_floor_detection.pdb"
   "CMakeFiles/zed_ros_floor_detection.dir/src/main.cpp.o"
   "CMakeFiles/zed_ros_floor_detection.dir/src/main.cpp.o.d"
 )

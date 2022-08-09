@@ -7,10 +7,7 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/pc/catkin_ws/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/pc/catkin_ws/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/pc/catkin_ws/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PWD='/home/pc/catkin_ws/build'
-export PYTHONPATH="/home/pc/catkin_ws/devel/lib/python2.7/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES='/home/pc/catkin_ws/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/pc/catkin_ws/src:$ROS_PACKAGE_PATH"
+export CMAKE_PREFIX_PATH="/home/pc/Documents/GitHub/IW2.0/devel:$CMAKE_PREFIX_PATH"
+export PWD='/home/pc/Documents/GitHub/IW2.0/build'
+export ROSLISP_PACKAGE_DIRECTORIES='/home/pc/Documents/GitHub/IW2.0/devel/share/common-lisp'
+export ROS_PACKAGE_PATH="/home/pc/Documents/GitHub/IW2.0/src:$ROS_PACKAGE_PATH"

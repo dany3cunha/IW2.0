@@ -1,5 +1,5 @@
 zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/zed_nodelet/src/zed_wrapper_nodelet.cpp.o: \
- /home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/src/zed_nodelet/src/zed_wrapper_nodelet.cpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/src/zed_nodelet/src/zed_wrapper_nodelet.cpp \
  /usr/include/stdc-predef.h /usr/include/c++/7/chrono \
  /usr/include/c++/7/ratio /usr/include/c++/7/type_traits \
  /usr/include/x86_64-linux-gnu/c++/7/bits/c++config.h \
@@ -159,7 +159,7 @@ zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/zed_nodelet/src/zed_
  /usr/include/c++/7/bits/basic_ios.tcc /usr/include/c++/7/ostream \
  /usr/include/c++/7/bits/ostream.tcc /usr/include/c++/7/bits/istream.tcc \
  /usr/include/c++/7/bits/sstream.tcc \
- /home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/src/zed_nodelet/include/zed_wrapper_nodelet.hpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/src/zed_nodelet/include/zed_wrapper_nodelet.hpp \
  /opt/ros/melodic/include/diagnostic_updater/diagnostic_updater.h \
  /usr/include/c++/7/vector /usr/include/c++/7/bits/stl_construct.h \
  /usr/include/c++/7/bits/stl_uninitialized.h \
@@ -1529,7 +1529,7 @@ zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/zed_nodelet/src/zed_
  /usr/local/cuda/include/vector_functions.hpp \
  /usr/local/cuda/include/cuda_runtime_api.h \
  /usr/local/cuda/include/device_launch_parameters.h \
- /home/pc/catkin_ws/src/zed-ros-wrapper/zed_nodelets/src/tools/include/sl_tools.h \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed_nodelets/src/tools/include/sl_tools.h \
  /opt/ros/melodic/include/std_msgs/String.h \
  /usr/include/x86_64-linux-gnu/c++/7/bits/stdc++.h \
  /usr/include/c++/7/ciso646 /usr/include/c++/7/csetjmp \
@@ -1579,55 +1579,55 @@ zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/zed_nodelet/src/zed_
  /usr/include/c++/7/bits/hashtable_policy.h \
  /usr/include/c++/7/bits/unordered_map.h /usr/include/c++/7/unordered_set \
  /usr/include/c++/7/bits/unordered_set.h \
- /home/pc/catkin_ws/devel/include/zed_nodelets/ZedConfig.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_nodelets/ZedConfig.h \
  /opt/ros/melodic/include/dynamic_reconfigure/config_tools.h \
  /opt/ros/melodic/include/dynamic_reconfigure/config_init_mutex.h \
  /usr/include/boost/any.hpp \
- /home/pc/catkin_ws/devel/include/zed_interfaces/reset_odometry.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/reset_odometryRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/reset_odometryResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/reset_tracking.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/reset_trackingRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/reset_trackingResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/save_3d_map.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/save_3d_mapRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/save_3d_mapResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/save_area_memory.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/save_area_memoryRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/save_area_memoryResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/set_led_status.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/set_led_statusRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/set_led_statusResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/set_pose.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/set_poseRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/set_poseResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_3d_mapping.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_3d_mappingRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_3d_mappingResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_object_detection.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_object_detectionRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_object_detectionResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_remote_stream.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_remote_streamRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_remote_streamResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_svo_recording.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_svo_recordingRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/start_svo_recordingResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_3d_mapping.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_3d_mappingRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_3d_mappingResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_object_detection.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_object_detectionRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_object_detectionResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_remote_stream.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_remote_streamRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_remote_streamResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_svo_recording.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_svo_recordingRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/stop_svo_recordingResponse.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/toggle_led.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/toggle_ledRequest.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/toggle_ledResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/reset_odometry.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/reset_odometryRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/reset_odometryResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/reset_tracking.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/reset_trackingRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/reset_trackingResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/save_3d_map.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/save_3d_mapRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/save_3d_mapResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/save_area_memory.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/save_area_memoryRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/save_area_memoryResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/set_led_status.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/set_led_statusRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/set_led_statusResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/set_pose.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/set_poseRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/set_poseResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_3d_mapping.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_3d_mappingRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_3d_mappingResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_object_detection.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_object_detectionRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_object_detectionResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_remote_stream.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_remote_streamRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_remote_streamResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_svo_recording.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_svo_recordingRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/start_svo_recordingResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_3d_mapping.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_3d_mappingRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_3d_mappingResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_object_detection.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_object_detectionRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_object_detectionResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_remote_stream.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_remote_streamRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_remote_streamResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_svo_recording.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_svo_recordingRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/stop_svo_recordingResponse.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/toggle_led.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/toggle_ledRequest.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/toggle_ledResponse.h \
  /opt/ros/melodic/include/geometry_msgs/PoseWithCovarianceStamped.h \
  /opt/ros/melodic/include/geometry_msgs/PoseWithCovariance.h \
  /opt/ros/melodic/include/nav_msgs/Odometry.h \
@@ -1670,17 +1670,17 @@ zed-ros-wrapper/zed_nodelets/CMakeFiles/ZEDNodelets.dir/src/zed_nodelet/src/zed_
  /opt/ros/melodic/include/class_loader/meta_object.hpp \
  /opt/ros/melodic/include/class_loader/visibility_control.hpp \
  /opt/ros/melodic/include/class_loader/register_macro.hpp \
- /home/pc/catkin_ws/devel/include/zed_interfaces/Object.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/BoundingBox2Di.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/Keypoint2Di.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/BoundingBox3D.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/Keypoint3D.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/BoundingBox2Df.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/Keypoint2Df.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/Skeleton2D.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/Skeleton3D.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/ObjectsStamped.h \
- /home/pc/catkin_ws/devel/include/zed_interfaces/PlaneStamped.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/Object.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/BoundingBox2Di.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/Keypoint2Di.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/BoundingBox3D.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/Keypoint3D.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/BoundingBox2Df.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/Keypoint2Df.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/Skeleton2D.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/Skeleton3D.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/ObjectsStamped.h \
+ /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/PlaneStamped.h \
  /opt/ros/melodic/include/shape_msgs/Mesh.h \
  /opt/ros/melodic/include/shape_msgs/MeshTriangle.h \
  /opt/ros/melodic/include/shape_msgs/Plane.h \

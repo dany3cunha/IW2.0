@@ -1,7 +1,7 @@
 zed-ros-examples/tests/zed_sync_test/CMakeFiles/ZEDSyncTest.dir/src/rgbd_test_sync.cpp.o: \
- /home/pc/catkin_ws/src/zed-ros-examples/tests/zed_sync_test/src/rgbd_test_sync.cpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/tests/zed_sync_test/src/rgbd_test_sync.cpp \
  /usr/include/stdc-predef.h \
- /home/pc/catkin_ws/src/zed-ros-examples/tests/zed_sync_test/src/rgbd_test_sync.hpp \
+ /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/tests/zed_sync_test/src/rgbd_test_sync.hpp \
  /opt/ros/melodic/include/ros/ros.h /opt/ros/melodic/include/ros/time.h \
  /opt/ros/melodic/include/ros/platform.h /usr/include/c++/7/stdlib.h \
  /usr/include/c++/7/cstdlib \

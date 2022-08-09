@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/zed_wrapper/zed_wrapper_node"
-  "/home/pc/catkin_ws/devel/lib/zed_wrapper/zed_wrapper_node.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_wrapper/zed_wrapper_node"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/zed_wrapper/zed_wrapper_node.pdb"
   "CMakeFiles/zed_wrapper_node.dir/src/zed_wrapper_node.cpp.o"
   "CMakeFiles/zed_wrapper_node.dir/src/zed_wrapper_node.cpp.o.d"
 )

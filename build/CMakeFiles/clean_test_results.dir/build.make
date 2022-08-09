@@ -53,10 +53,10 @@ RM = /home/pc/.local/lib/python3.6/site-packages/cmake/data/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/pc/catkin_ws/src
+CMAKE_SOURCE_DIR = /home/pc/Documents/GitHub/IW2.0/src
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/pc/catkin_ws/build
+CMAKE_BINARY_DIR = /home/pc/Documents/GitHub/IW2.0/build
 
 # Utility rule file for clean_test_results.
 
@@ -67,7 +67,7 @@ include CMakeFiles/clean_test_results.dir/compiler_depend.make
 include CMakeFiles/clean_test_results.dir/progress.make
 
 CMakeFiles/clean_test_results:
-	/usr/bin/python2 /opt/ros/melodic/share/catkin/cmake/test/remove_test_results.py /home/pc/catkin_ws/build/test_results
+	/usr/bin/python2 /opt/ros/melodic/share/catkin/cmake/test/remove_test_results.py /home/pc/Documents/GitHub/IW2.0/build/test_results
 
 clean_test_results: CMakeFiles/clean_test_results
 clean_test_results: CMakeFiles/clean_test_results.dir/build.make
@@ -82,6 +82,6 @@ CMakeFiles/clean_test_results.dir/clean:
 .PHONY : CMakeFiles/clean_test_results.dir/clean
 
 CMakeFiles/clean_test_results.dir/depend:
-	cd /home/pc/catkin_ws/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pc/catkin_ws/src /home/pc/catkin_ws/src /home/pc/catkin_ws/build /home/pc/catkin_ws/build /home/pc/catkin_ws/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/pc/Documents/GitHub/IW2.0/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/pc/Documents/GitHub/IW2.0/src /home/pc/Documents/GitHub/IW2.0/src /home/pc/Documents/GitHub/IW2.0/build /home/pc/Documents/GitHub/IW2.0/build /home/pc/Documents/GitHub/IW2.0/build/CMakeFiles/clean_test_results.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/clean_test_results.dir/depend
 

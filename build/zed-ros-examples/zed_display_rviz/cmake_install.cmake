@@ -1,8 +1,8 @@
-# Install script for directory: /home/pc/catkin_ws/src/zed-ros-examples/zed_display_rviz
+# Install script for directory: /home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/zed_display_rviz
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/pc/catkin_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/pc/Documents/GitHub/IW2.0/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -43,21 +43,21 @@ if(NOT DEFINED CMAKE_OBJDUMP)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/catkin_ws/build/zed-ros-examples/zed_display_rviz/catkin_generated/installspace/zed_display_rviz.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/zed_display_rviz/catkin_generated/installspace/zed_display_rviz.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_display_rviz/cmake" TYPE FILE FILES
-    "/home/pc/catkin_ws/build/zed-ros-examples/zed_display_rviz/catkin_generated/installspace/zed_display_rvizConfig.cmake"
-    "/home/pc/catkin_ws/build/zed-ros-examples/zed_display_rviz/catkin_generated/installspace/zed_display_rvizConfig-version.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/zed_display_rviz/catkin_generated/installspace/zed_display_rvizConfig.cmake"
+    "/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/zed_display_rviz/catkin_generated/installspace/zed_display_rvizConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_display_rviz" TYPE FILE FILES "/home/pc/catkin_ws/src/zed-ros-examples/zed_display_rviz/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_display_rviz" TYPE FILE FILES "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/zed_display_rviz/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_display_rviz" TYPE DIRECTORY FILES "/home/pc/catkin_ws/src/zed-ros-examples/zed_display_rviz/launch")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/zed_display_rviz" TYPE DIRECTORY FILES "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-examples/zed_display_rviz/launch")
 endif()
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/libZEDSyncTest.pdb"
-  "/home/pc/catkin_ws/devel/lib/libZEDSyncTest.so"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/libZEDSyncTest.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/libZEDSyncTest.so"
   "CMakeFiles/ZEDSyncTest.dir/src/rgbd_test_sync.cpp.o"
   "CMakeFiles/ZEDSyncTest.dir/src/rgbd_test_sync.cpp.o.d"
 )

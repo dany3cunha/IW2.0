@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/pc/catkin_ws/devel/lib/libZEDNodelets.pdb"
-  "/home/pc/catkin_ws/devel/lib/libZEDNodelets.so"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/libZEDNodelets.pdb"
+  "/home/pc/Documents/GitHub/IW2.0/devel/lib/libZEDNodelets.so"
   "CMakeFiles/ZEDNodelets.dir/src/rgbd_sensors_demux_nodelet/src/rgbd_sensor_demux.cpp.o"
   "CMakeFiles/ZEDNodelets.dir/src/rgbd_sensors_demux_nodelet/src/rgbd_sensor_demux.cpp.o.d"
   "CMakeFiles/ZEDNodelets.dir/src/rgbd_sensors_sync_nodelet/src/rgbd_sensor_sync.cpp.o"
