@@ -1,0 +1,8 @@
+prefix=/home/pc/catkin_ws/install
+
+Name: zed-ros-app
+Description: Description of zed-ros-app
+Version: 3.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

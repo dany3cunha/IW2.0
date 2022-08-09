@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/pc/catkin_ws/devel/include/**",
+        "/opt/ros/melodic/include/**",
+        "/home/pc/catkin_ws/src/zed-ros-app/include/**",
+        "/home/pc/catkin_ws/src/zed-ros-wrapper/zed-ros-interfaces/include/**",
+        "/home/pc/catkin_ws/src/zed_ros_floor_detection/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-x64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}
