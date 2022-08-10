@@ -5,6 +5,8 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Grid1
+        - /Video1
+        - /Video1/Camera view1
         - /Video1/Camera view1/Visibility1
         - /Depth1/PointCloud21
         - /Depth1/DepthCloud1/Auto Size1
@@ -40,7 +42,7 @@ Panels:
     Experimental: false
     Name: Time
     SyncMode: 0
-    SyncSource: PointCloud2
+    SyncSource: LaserScan
 Preferences:
   PromptSaveOnExit: true
 Toolbars:
@@ -144,8 +146,6 @@ Visualization Manager:
           Value: true
         zed2_camera_center:
           Value: true
-        zed2_imu_link:
-          Value: true
         zed2_left_camera_frame:
           Value: true
         zed2_left_camera_optical_frame:
@@ -159,6 +159,28 @@ Visualization Manager:
         zed2_temp_left_link:
           Value: true
         zed2_temp_right_link:
+          Value: true
+        zed_baro_link:
+          Value: true
+        zed_base_link:
+          Value: true
+        zed_camera_center:
+          Value: true
+        zed_imu_link:
+          Value: true
+        zed_left_camera_frame:
+          Value: true
+        zed_left_camera_optical_frame:
+          Value: true
+        zed_mag_link:
+          Value: true
+        zed_right_camera_frame:
+          Value: true
+        zed_right_camera_optical_frame:
+          Value: true
+        zed_temp_left_link:
+          Value: true
+        zed_temp_right_link:
           Value: true
       Marker Scale: 0.5
       Name: TF
@@ -174,8 +196,6 @@ Visualization Manager:
                   zed2_baro_link:
                     {}
                   zed2_left_camera_frame:
-                    zed2_imu_link:
-                      {}
                     zed2_left_camera_optical_frame:
                       {}
                     zed2_temp_left_link:
@@ -186,6 +206,24 @@ Visualization Manager:
                     zed2_right_camera_optical_frame:
                       {}
                     zed2_temp_right_link:
+                      {}
+              zed_base_link:
+                zed_camera_center:
+                  zed_baro_link:
+                    {}
+                  zed_left_camera_frame:
+                    zed_imu_link:
+                      {}
+                    zed_left_camera_optical_frame:
+                      {}
+                    zed_temp_left_link:
+                      {}
+                  zed_mag_link:
+                    {}
+                  zed_right_camera_frame:
+                    zed_right_camera_optical_frame:
+                      {}
+                    zed_temp_right_link:
                       {}
       Update Interval: 0
       Value: true
@@ -626,10 +664,10 @@ Visualization Manager:
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: 0.3047977685928345
+      Pitch: 0.32479774951934814
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 3.148662805557251
+      Yaw: 3.4436707496643066
     Saved: ~
 Window Geometry:
   Camera view:

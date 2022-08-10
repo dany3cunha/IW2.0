@@ -1,5 +1,14 @@
 #include "headers.hpp"
 
+void pointCloud2_callback(const sensor_msgs::PointCloud2 &ptCloud)
+{
+
+    for (sensor_msgs::PointCloud2ConstIterator<float> it(ptCloud, "x"); it != it.end(); ++it)
+    {
+        // TODO: do something with the values of x, y, z
+        //std::cout << it[0] << ", " << it[1] << ", " << it[2] << '\n';
+    }
+}
 /**
  * Node main function
  */
@@ -74,10 +83,13 @@ int main(int argc, char **argv)
 
     ros::init(argc, argv, "zed_ros_floor_detection");
     ros::NodeHandle n1, n2, cmd_config;
+    ros::NodeHandle pointCloud2_node;
 
     ros::Publisher floor_PubMarker = n1.advertise<visualization_msgs::Marker>("/zed2/zed_node/plane_marker", 1, false);
     // ros::Publisher floor_PubPlane = n2.advertise<zed_interfaces::PlaneStamped>("zed2/zed_node/plane", 10, false);
     ros::Publisher cmd_ConfigPub = cmd_config.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
+
+    ros::Subscriber ptCloud_sub = pointCloud2_node.subscribe("/zed2/zed_node/point_cloud/cloud_registered", 10, pointCloud2_callback);
 
     ros::Rate loop_rate(ROS_loopRate);
 
@@ -122,7 +134,10 @@ int main(int argc, char **argv)
                         floor_PubMarker.publish(plane_marker);
                         //  <---- Publish the plane as green mesh
 
-                        // planesVectors(plane,zed);
+                        sl::float3 vector_normal = plane.getNormal();
+                        sl::float4 eq = plane.getPlaneEquation();
+                        cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
+                        cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
 
                         // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
                         //  planeAsCustomMessage(planeMsg, plane);
@@ -380,6 +395,7 @@ int getOCVtype(sl::MAT_TYPE type)
 void planesVectors(sl::Plane plane, sl::Camera zed)
 {
     sl::float3 vector_normal = plane.getNormal();
+    sl::float4 eq = plane.getPlaneEquation();
     SensorsData sensors_data;
     SensorsData::IMUData imu_data;
 
@@ -393,4 +409,5 @@ void planesVectors(sl::Plane plane, sl::Camera zed)
 
     cout << "Camera normal(x,y,z) " << linear_acceleration.x << " " << linear_acceleration.y << " " << linear_acceleration.z << endl;
     cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
+    cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
 }

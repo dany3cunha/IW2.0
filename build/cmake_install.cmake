@@ -136,6 +136,7 @@ endif()
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
   include("/home/pc/Documents/GitHub/IW2.0/build/gtest/cmake_install.cmake")
+  include("/home/pc/Documents/GitHub/IW2.0/build/pcl-tutorial/cmake_install.cmake")
   include("/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/examples/zed_ar_track_alvar_example/cmake_install.cmake")
   include("/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/tutorials/zed_depth_sub_tutorial/cmake_install.cmake")
   include("/home/pc/Documents/GitHub/IW2.0/build/zed-ros-examples/zed_display_rviz/cmake_install.cmake")

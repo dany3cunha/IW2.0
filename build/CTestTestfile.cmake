@@ -5,6 +5,7 @@
 # This file includes the relevant testing commands required for 
 # testing this directory and lists subdirectories to be tested as well.
 subdirs("gtest")
+subdirs("pcl-tutorial")
 subdirs("zed-ros-examples/examples/zed_ar_track_alvar_example")
 subdirs("zed-ros-examples/tutorials/zed_depth_sub_tutorial")
 subdirs("zed-ros-examples/zed_display_rviz")

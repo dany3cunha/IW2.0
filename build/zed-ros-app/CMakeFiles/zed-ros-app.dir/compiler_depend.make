@@ -1108,6 +1108,10 @@ zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o: /home/pc/Documents/GitHub
   /opt/ros/melodic/include/geometry_msgs/Quaternion.h \
   /opt/ros/melodic/include/geometry_msgs/Vector3.h \
   /opt/ros/melodic/include/std_msgs/ColorRGBA.h \
+  /opt/ros/melodic/include/sensor_msgs/PointCloud2.h \
+  /opt/ros/melodic/include/sensor_msgs/PointField.h \
+  /opt/ros/melodic/include/sensor_msgs/point_cloud2_iterator.h \
+  /opt/ros/melodic/include/sensor_msgs/impl/point_cloud2_iterator.h \
   /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/PlaneStamped.h \
   /opt/ros/melodic/include/shape_msgs/Mesh.h \
   /opt/ros/melodic/include/shape_msgs/MeshTriangle.h \
@@ -1584,6 +1588,10 @@ zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o: /home/pc/Documents/GitHub
 /opt/ros/melodic/include/shape_msgs/Plane.h:
 
 /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/PlaneStamped.h:
+
+/opt/ros/melodic/include/sensor_msgs/impl/point_cloud2_iterator.h:
+
+/opt/ros/melodic/include/sensor_msgs/PointField.h:
 
 /opt/ros/melodic/include/std_msgs/ColorRGBA.h:
 
@@ -2262,6 +2270,8 @@ zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o: /home/pc/Documents/GitHub
 /usr/include/boost/predef/library/std/msl.h:
 
 /usr/include/boost/mpl/clear.hpp:
+
+/opt/ros/melodic/include/sensor_msgs/PointCloud2.h:
 
 /usr/include/boost/function/function_fwd.hpp:
 
@@ -3560,6 +3570,8 @@ zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o: /home/pc/Documents/GitHub
 /usr/include/boost/mpl/apply_wrap.hpp:
 
 /usr/include/boost/move/utility_core.hpp:
+
+/opt/ros/melodic/include/sensor_msgs/point_cloud2_iterator.h:
 
 /opt/ros/melodic/include/ros/serialized_message.h:
 

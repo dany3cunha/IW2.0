@@ -1,0 +1,8 @@
+prefix=/home/pc/Documents/GitHub/IW2.0/devel
+
+Name: pcl-tutorial
+Description: Description of pcl-tutorial
+Version: 0.0.0
+Cflags: -I/home/pc/Documents/GitHub/IW2.0/src/pcl-tutorial/include
+Libs: -L${prefix}/lib -lpcl-tutorial
+Requires: pcl_conversions pcl_ros roscpp sensor_msgs

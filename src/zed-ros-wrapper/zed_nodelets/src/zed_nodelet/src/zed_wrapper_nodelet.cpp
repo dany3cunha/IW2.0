@@ -3883,7 +3883,7 @@ namespace zed_nodelets
                     {
                         int exposure = mZed.getCameraSettings(sl::VIDEO_SETTINGS::EXPOSURE);
                         // alterado
-                        std::cout << "EXPOSURE:" << exposure << std::endl;
+                        //std::cout << "EXPOSURE:" << exposure << std::endl;
                         if (exposure != mCamExposure)
                         {
                             mZed.setCameraSettings(sl::VIDEO_SETTINGS::EXPOSURE, mCamExposure);

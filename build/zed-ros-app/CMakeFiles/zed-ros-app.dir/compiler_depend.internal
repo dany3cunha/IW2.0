@@ -1109,6 +1109,10 @@ zed-ros-app/CMakeFiles/zed-ros-app.dir/src/main.cpp.o
  /opt/ros/melodic/include/geometry_msgs/Quaternion.h
  /opt/ros/melodic/include/geometry_msgs/Vector3.h
  /opt/ros/melodic/include/std_msgs/ColorRGBA.h
+ /opt/ros/melodic/include/sensor_msgs/PointCloud2.h
+ /opt/ros/melodic/include/sensor_msgs/PointField.h
+ /opt/ros/melodic/include/sensor_msgs/point_cloud2_iterator.h
+ /opt/ros/melodic/include/sensor_msgs/impl/point_cloud2_iterator.h
  /home/pc/Documents/GitHub/IW2.0/devel/include/zed_interfaces/PlaneStamped.h
  /opt/ros/melodic/include/shape_msgs/Mesh.h
  /opt/ros/melodic/include/shape_msgs/MeshTriangle.h

@@ -1,5 +1,7 @@
 #include <ros/ros.h>
 #include <visualization_msgs/Marker.h>
+#include <sensor_msgs/PointCloud2.h>
+#include <sensor_msgs/point_cloud2_iterator.h>
 #include <zed_interfaces/PlaneStamped.h>
 
 // Standard includes
