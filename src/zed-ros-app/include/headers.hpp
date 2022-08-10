@@ -28,8 +28,10 @@
 using namespace std;
 using namespace sl;
 
+#define ROS_loopRate 10
 #define planeDuration 1 // plane duration on rviz publication in seconds
 #define open_exposure 10 // inital exposure in opening camera
+#define open_gain 10 // constant pretended gain 
 
 #define minExposure_thres 0.05 // minimal exposure percentage, if lower than this value then exposure increase
 #define maxExposure_thres 5 // maximum exposure percentage, if grater than this value then exposure decreases
@@ -44,3 +46,4 @@ cv::Mat slMat2cvMat(sl::Mat &input);
  */
 int getOCVtype(sl::MAT_TYPE type);
 void adjustCameraExposure(cv::Mat cv_image, int &exposure);
+void planesVectors(Plane plane, Camera zed);

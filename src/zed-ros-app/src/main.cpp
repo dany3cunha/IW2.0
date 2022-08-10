@@ -24,10 +24,7 @@ int main(int argc, char **argv)
     // Setup configuration parameters for the ZED
     InitParameters init_parameters;
     init_parameters.coordinate_units = UNIT::METER;
-    // init_parameters.depth_mode = DEPTH_MODE::ULTRA; // The default is ULTRA! If jetson, is PERFORMANCE
     init_parameters.coordinate_system = COORDINATE_SYSTEM::RIGHT_HANDED_Z_UP_X_FWD; // This system is for ROS
-    // init_parameters.camera_fps = 15;
-    init_parameters.sdk_verbose = true;
 
     init_parameters.input.setFromStream("127.0.0.1", 5000);
 
@@ -41,9 +38,6 @@ int main(int argc, char **argv)
 
     auto camera_info = zed.getCameraInformation();
     cout << endl;
-    cout << "ZED Model                 : " << camera_info.camera_model << endl;
-    cout << "ZED Serial Number         : " << camera_info.serial_number << endl;
-    cout << "ZED Camera Firmware       : " << camera_info.camera_configuration.firmware_version << "/" << camera_info.sensors_configuration.firmware_version << endl;
     cout << "ZED Camera Resolution     : " << camera_info.camera_configuration.resolution.width << "x" << camera_info.camera_configuration.resolution.height << endl;
     cout << "ZED Camera FPS            : " << zed.getInitParameters().camera_fps << endl;
 
@@ -64,8 +58,6 @@ int main(int argc, char **argv)
     // Enable positional tracking before starting spatial mapping
     zed.enablePositionalTracking(tracking_parameters);
 
-    // RuntimeParameters runtime_parameters = zed.getRuntimeParameters();
-    /* Both are default  */
     RuntimeParameters runtime_parameters;
     runtime_parameters.measure3D_reference_frame = REFERENCE_FRAME::CAMERA;
 
@@ -81,32 +73,33 @@ int main(int argc, char **argv)
     cv::Mat image_ocv = slMat2cvMat(image_zed);
 
     ros::init(argc, argv, "zed_ros_floor_detection");
-    ros::NodeHandle n1;
-    ros::NodeHandle n2;
-    ros::NodeHandle cmd_ExpGain;
+    ros::NodeHandle n1, n2, cmd_config;
 
     ros::Publisher floor_PubMarker = n1.advertise<visualization_msgs::Marker>("/zed2/zed_node/plane_marker", 1, false);
     // ros::Publisher floor_PubPlane = n2.advertise<zed_interfaces::PlaneStamped>("zed2/zed_node/plane", 10, false);
-    ros::Publisher cmd_ExpGainPub = cmd_ExpGain.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
+    ros::Publisher cmd_ConfigPub = cmd_config.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
 
-    ros::Rate loop_rate(1);
+    ros::Rate loop_rate(ROS_loopRate);
 
     std_msgs::String msg;
+
     int exposure = open_exposure;
     while (ros::ok())
     {
+        int old_exposure = exposure;
+        adjustCameraExposure(image_ocv, exposure);
+        if (exposure != old_exposure)
+        {
+            msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
+            cmd_ConfigPub.publish(msg);
+            cout << "EXP: " << exposure << endl;
+        }
 
-        msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
-        cmd_ExpGainPub.publish(msg);
-        // exposure++;
-
-        cout << "EXP: " << exposure << endl;
         if (zed.grab(runtime_parameters) == ERROR_CODE::SUCCESS)
         {
             // Retrieve image in GPU memory
             if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
             {
-                adjustCameraExposure(image_ocv,exposure);
                 // Update pose data (used for projection of the mesh over the current image)
                 tracking_state = zed.getPosition(pose);
 
@@ -118,7 +111,6 @@ int main(int argc, char **argv)
                     Transform resetTrackingFloorFrame;
                     find_plane_status = zed.findFloorPlane(plane, resetTrackingFloorFrame);
 
-
                     if (find_plane_status == ERROR_CODE::SUCCESS && duration > 500)
                     {
 
@@ -127,25 +119,10 @@ int main(int argc, char **argv)
                         visualization_msgs::MarkerPtr plane_marker = boost::make_shared<visualization_msgs::Marker>();
                         meshToPlaneMarker(plane_marker, mesh, pose);
                         // Publish the marker
-
                         floor_PubMarker.publish(plane_marker);
-
-                        sl::float3 vector_normal = plane.getNormal();
-                        SensorsData sensors_data;
-                        SensorsData::IMUData imu_data;
-
-                        zed.getSensorsData(sensors_data, TIME_REFERENCE::IMAGE); // Retrieve only frame synchronized data
-
-                        // Extract IMU data
-                        imu_data = sensors_data.imu;
-
-                        // Retrieve linear acceleration and angular velocity
-                        sl::float3 linear_acceleration = imu_data.linear_acceleration;
-
-                        cout << "Camera normal(x,y,z) " << linear_acceleration.x << " " << linear_acceleration.y << " " << linear_acceleration.z << endl;
-                        cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
-
                         //  <---- Publish the plane as green mesh
+
+                        // planesVectors(plane,zed);
 
                         // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
                         //  planeAsCustomMessage(planeMsg, plane);
@@ -154,25 +131,17 @@ int main(int argc, char **argv)
                         //   <---- Publish plane as custom message
                         ts_last = chrono::high_resolution_clock::now();
                     }
-                    else 
-
+                    else
                     {
                         mesh.clear();
                     }
                 }
-                else
-                {
-                    cout << "Tracking state error: " << tracking_state << endl;
-                }
-            }
-            else
-            {
-                cout << "Cannot retrieve image" << endl;
             }
         }
-        else
+
+        if (!ros::master::check())
         {
-            cout << "cannot grab" << endl;
+            ros::shutdown();
         }
 
         ros::spinOnce();
@@ -406,4 +375,22 @@ int getOCVtype(sl::MAT_TYPE type)
         break;
     }
     return cv_type;
+}
+
+void planesVectors(sl::Plane plane, sl::Camera zed)
+{
+    sl::float3 vector_normal = plane.getNormal();
+    SensorsData sensors_data;
+    SensorsData::IMUData imu_data;
+
+    zed.getSensorsData(sensors_data, TIME_REFERENCE::IMAGE); // Retrieve only frame synchronized data
+
+    // Extract IMU data
+    imu_data = sensors_data.imu;
+
+    // Retrieve linear acceleration and angular velocity
+    sl::float3 linear_acceleration = imu_data.linear_acceleration;
+
+    cout << "Camera normal(x,y,z) " << linear_acceleration.x << " " << linear_acceleration.y << " " << linear_acceleration.z << endl;
+    cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
 }
