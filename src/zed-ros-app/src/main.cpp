@@ -47,28 +47,6 @@ int main(int argc, char **argv)
     cout << "ZED Camera Resolution     : " << camera_info.camera_configuration.resolution.width << "x" << camera_info.camera_configuration.resolution.height << endl;
     cout << "ZED Camera FPS            : " << zed.getInitParameters().camera_fps << endl;
 
-    /*
-    sl::StreamingParameters stream_params;
-    stream_params.codec = STREAMING_CODEC::H264;
-    stream_params.bitrate = 8000;
-    stream_params.chunk_size = 4096;
-    stream_params.port = 5000;
-    /*
-    if (argc == 2 && res_arg == 1)
-        stream_params.port = atoi(argv[1]);
-    if (argc > 2)
-        stream_params.port = atoi(argv[2]);
-    */
-    /*
-
-  if (zed.enableStreaming(stream_params) != ERROR_CODE::SUCCESS)
-  {
-      cout << "Streaming initialization error" << endl;
-      return EXIT_FAILURE;
-  }
-
-  cout << "Streaming on port " << to_string(stream_params.port) << endl;
-  */
     Mat image;   // current left image
     Pose pose;   // positional tracking data
     Plane plane; // detected plane
@@ -227,7 +205,7 @@ void adjustCameraExposure(cv::Mat cv_image, int &exposure)
     double x = 100 * double(sum) / (double(hsv.rows) * double(hsv.cols));
     cout << "HSV: " << x << " %" << endl;
 
-    if (x > 5)
+    if (x > maxExposure_thres)
     {
         if (exposure > 1)
         {
@@ -238,7 +216,7 @@ void adjustCameraExposure(cv::Mat cv_image, int &exposure)
             exposure = 0;
         }
     }
-    if (x < 0.05)
+    if (x < minExposure_thres)
     {
         exposure++;
     }

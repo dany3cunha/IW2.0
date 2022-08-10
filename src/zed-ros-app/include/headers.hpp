@@ -30,6 +30,10 @@ using namespace sl;
 
 #define planeDuration 1 // plane duration on rviz publication in seconds
 #define open_exposure 10 // inital exposure in opening camera
+
+#define minExposure_thres 0.05 // minimal exposure percentage, if lower than this value then exposure increase
+#define maxExposure_thres 5 // maximum exposure percentage, if grater than this value then exposure decreases
+
 void meshToPlaneMarker(visualization_msgs::MarkerPtr &plane_marker, sl::Mesh mesh, sl::Pose pose);
 void planeAsCustomMessage(zed_interfaces::PlaneStampedPtr &planeMsg, sl::Plane plane);
 cv::Mat slMat2cvMat(sl::Mat &input);
