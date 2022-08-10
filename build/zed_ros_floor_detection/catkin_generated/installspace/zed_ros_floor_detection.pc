@@ -1,0 +1,8 @@
+prefix=/home/pc/Documents/GitHub/IW2.0/install
+
+Name: zed_ros_floor_detection
+Description: Description of zed_ros_floor_detection
+Version: 3.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 
