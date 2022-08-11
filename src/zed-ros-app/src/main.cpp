@@ -6,12 +6,14 @@ void pointCloud2_callback(const sensor_msgs::PointCloud2 &ptCloud)
     for (sensor_msgs::PointCloud2ConstIterator<float> it(ptCloud, "x"); it != it.end(); ++it)
     {
         // TODO: do something with the values of x, y, z
-        //std::cout << it[0] << ", " << it[1] << ", " << it[2] << '\n';
+        // std::cout << it[0] << ", " << it[1] << ", " << it[2] << '\n';
     }
 }
 /**
  * Node main function
  */
+
+double x;
 int main(int argc, char **argv)
 {
 #if 1
@@ -50,10 +52,11 @@ int main(int argc, char **argv)
     cout << "ZED Camera Resolution     : " << camera_info.camera_configuration.resolution.width << "x" << camera_info.camera_configuration.resolution.height << endl;
     cout << "ZED Camera FPS            : " << zed.getInitParameters().camera_fps << endl;
 
-    Mat image;   // current left image
-    Pose pose;   // positional tracking data
-    Plane plane; // detected plane
-    Mesh mesh;   // plane mesh
+    Mat image;      // current left image
+    Pose pose;      // positional tracking data
+    Plane plane;    // detected plane
+    Mesh mesh;      // plane mesh
+    Mesh best_mesh; // plane mesh with most points (to publish)
 
     ERROR_CODE find_plane_status = ERROR_CODE::SUCCESS;
     POSITIONAL_TRACKING_STATE tracking_state = POSITIONAL_TRACKING_STATE::OFF;
@@ -96,6 +99,8 @@ int main(int argc, char **argv)
     std_msgs::String msg;
 
     int exposure = open_exposure;
+
+    int plane_counter = 0;
     while (ros::ok())
     {
         int old_exposure = exposure;
@@ -104,6 +109,7 @@ int main(int argc, char **argv)
         {
             msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
             cmd_ConfigPub.publish(msg);
+            cout << "HSV: " << x << " %" << endl;
             cout << "EXP: " << exposure << endl;
         }
 
@@ -123,28 +129,39 @@ int main(int argc, char **argv)
                     Transform resetTrackingFloorFrame;
                     find_plane_status = zed.findFloorPlane(plane, resetTrackingFloorFrame);
 
-                    if (find_plane_status == ERROR_CODE::SUCCESS && duration > 500)
+                    if (find_plane_status == ERROR_CODE::SUCCESS)
                     {
 
                         mesh = plane.extractMesh();
+                        plane_counter++;
 
-                        visualization_msgs::MarkerPtr plane_marker = boost::make_shared<visualization_msgs::Marker>();
-                        meshToPlaneMarker(plane_marker, mesh, pose);
-                        // Publish the marker
-                        floor_PubMarker.publish(plane_marker);
-                        //  <---- Publish the plane as green mesh
+                        if (mesh.getNumberOfTriangles() > best_mesh.getNumberOfTriangles())
+                            best_mesh = mesh;
 
-                        sl::float3 vector_normal = plane.getNormal();
-                        sl::float4 eq = plane.getPlaneEquation();
-                        cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
-                        cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
+                        if (plane_counter > ROS_loopRate)
+                        {
+                            visualization_msgs::MarkerPtr plane_marker = boost::make_shared<visualization_msgs::Marker>();
+                            meshToPlaneMarker(plane_marker, mesh, pose);
 
-                        // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
-                        //  planeAsCustomMessage(planeMsg, plane);
-                        //   Publish custom message
-                        //   floor_PubPlane.publish(planeMsg);
-                        //   <---- Publish plane as custom message
-                        ts_last = chrono::high_resolution_clock::now();
+                            // Publish the marker
+                            floor_PubMarker.publish(plane_marker);
+
+                            //  <---- Publish the plane as green mesh
+
+                            sl::float3 vector_normal = plane.getNormal();
+                            sl::float4 eq = plane.getPlaneEquation();
+                            cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
+                            cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
+
+                            // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
+                            //  planeAsCustomMessage(planeMsg, plane);
+                            //   Publish custom message
+                            //   floor_PubPlane.publish(planeMsg);
+                            //   <---- Publish plane as custom message
+
+                            best_mesh.clear();
+                            plane_counter = 0;
+                        }
                     }
                     else
                     {
@@ -186,8 +203,7 @@ void adjustCameraExposure(cv::Mat cv_image, int &exposure)
                 sum++;
         }
     }
-    double x = 100 * double(sum) / (double(hsv.rows) * double(hsv.cols));
-    cout << "HSV: " << x << " %" << endl;
+    x = 100 * double(sum) / (double(hsv.rows) * double(hsv.cols));
 
     if (x > maxExposure_thres)
     {
