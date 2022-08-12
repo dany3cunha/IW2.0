@@ -62,15 +62,17 @@ TARGET_LINK_LIBRARIES(${PROJECT_NAME}
                         ${GLUT_LIBRARY}
                         ${GLEW_LIBRARIES}
                         opencv_cudabgsegm
-                                opencv_cudaobjdetect
-                                opencv_cudastereo
-                                opencv_cudafeatures2d
-                                opencv_cudacodec
-                                opencv_cudaoptflow
-                                opencv_cudalegacy
-                                opencv_cudawarping
-                                opencv_cudaimgproc
-                                opencv_cudafilters)
+                        opencv_cudaobjdetect
+                        opencv_cudastereo
+                        opencv_cudafeatures2d
+                        opencv_cudacodec
+                        opencv_cudaoptflow
+                        opencv_cudalegacy
+                        opencv_cudawarping
+                        opencv_cudaimgproc
+                        opencv_cudafilters)
+
+add_dependencies(${PROJECT_NAME} ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 
 if(INSTALL_SAMPLES)
     LIST(APPEND SAMPLE_LIST ${PROJECT_NAME})

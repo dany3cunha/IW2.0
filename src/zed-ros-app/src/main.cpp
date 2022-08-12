@@ -52,11 +52,12 @@ int main(int argc, char **argv)
     cout << "ZED Camera Resolution     : " << camera_info.camera_configuration.resolution.width << "x" << camera_info.camera_configuration.resolution.height << endl;
     cout << "ZED Camera FPS            : " << zed.getInitParameters().camera_fps << endl;
 
-    Mat image;      // current left image
-    Pose pose;      // positional tracking data
-    Plane plane;    // detected plane
-    Mesh mesh;      // plane mesh
-    Mesh best_mesh; // plane mesh with most points (to publish)
+    Mat image;        // current left image
+    Pose pose;        // positional tracking data
+    Plane plane;      // detected plane
+    Plane best_plane; // plane with most points (to publish)
+    Mesh mesh;        // plane mesh
+    Mesh best_mesh;   // plane mesh with most points (to publish)
 
     ERROR_CODE find_plane_status = ERROR_CODE::SUCCESS;
     POSITIONAL_TRACKING_STATE tracking_state = POSITIONAL_TRACKING_STATE::OFF;
@@ -71,7 +72,7 @@ int main(int argc, char **argv)
     zed.enablePositionalTracking(tracking_parameters);
 
     RuntimeParameters runtime_parameters;
-    runtime_parameters.measure3D_reference_frame = REFERENCE_FRAME::CAMERA;
+    runtime_parameters.measure3D_reference_frame = REFERENCE_FRAME::WORLD;
 
     // Prepare new image size to retrieve half-resolution images
     Resolution image_size = zed.getCameraInformation().camera_resolution;
@@ -85,12 +86,13 @@ int main(int argc, char **argv)
     cv::Mat image_ocv = slMat2cvMat(image_zed);
 
     ros::init(argc, argv, "zed_ros_floor_detection");
-    ros::NodeHandle n1, n2, cmd_config;
+    ros::NodeHandle n1, n2, cmd_config, floor_eq;
     ros::NodeHandle pointCloud2_node;
 
     ros::Publisher floor_PubMarker = n1.advertise<visualization_msgs::Marker>("/zed2/zed_node/plane_marker", 1, false);
     // ros::Publisher floor_PubPlane = n2.advertise<zed_interfaces::PlaneStamped>("zed2/zed_node/plane", 10, false);
     ros::Publisher cmd_ConfigPub = cmd_config.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
+    ros::Publisher floor_EqPub = floor_eq.advertise<shape_msgs::Plane>("/zed2_floor_plane", 1, false);
 
     ros::Subscriber ptCloud_sub = pointCloud2_node.subscribe("/zed2/zed_node/point_cloud/cloud_registered", 10, pointCloud2_callback);
 
@@ -137,21 +139,27 @@ int main(int argc, char **argv)
 
                         if (mesh.getNumberOfTriangles() > best_mesh.getNumberOfTriangles())
                             best_mesh = mesh;
+                        best_plane = plane;
 
                         if (plane_counter > ROS_loopRate)
                         {
                             visualization_msgs::MarkerPtr plane_marker = boost::make_shared<visualization_msgs::Marker>();
-                            meshToPlaneMarker(plane_marker, mesh, pose);
+                            meshToPlaneMarker(plane_marker, best_mesh, pose);
 
-                            // Publish the marker
-                            floor_PubMarker.publish(plane_marker);
-
-                            //  <---- Publish the plane as green mesh
-
-                            sl::float3 vector_normal = plane.getNormal();
-                            sl::float4 eq = plane.getPlaneEquation();
+                            sl::float3 vector_normal = best_plane.getNormal();
+                            sl::float4 eq = best_plane.getPlaneEquation();
                             cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
                             cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
+
+                            shape_msgs::Plane eqToPub;
+                            eqToPub.coef.at(0) = eq.x;
+                            eqToPub.coef.at(1) = eq.y;
+                            eqToPub.coef.at(2) = eq.z;
+                            eqToPub.coef.at(3) = eq.w;
+
+                            // Publish the marker (as green mesh)
+                            floor_PubMarker.publish(plane_marker);
+                            floor_EqPub.publish(eqToPub);
 
                             // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
                             //  planeAsCustomMessage(planeMsg, plane);
