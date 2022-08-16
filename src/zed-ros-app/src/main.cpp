@@ -72,7 +72,7 @@ int main(int argc, char **argv)
     zed.enablePositionalTracking(tracking_parameters);
 
     RuntimeParameters runtime_parameters;
-    runtime_parameters.measure3D_reference_frame = REFERENCE_FRAME::WORLD;
+    runtime_parameters.measure3D_reference_frame = REFERENCE_FRAME::CAMERA;
 
     // Prepare new image size to retrieve half-resolution images
     Resolution image_size = zed.getCameraInformation().camera_resolution;
