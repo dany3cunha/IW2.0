@@ -78,17 +78,18 @@ int main(int argc, char **argv)
     cv::Mat image_ocv = slMat2cvMat(image_zed);
 
     ros::init(argc, argv, "zed_ros_floor_detection");
-    ros::NodeHandle n1, n2, cmd_config, floor_eq;
-    ros::NodeHandle pointCloud2_node;
+    ros::NodeHandle nh;
 
-    ros::Publisher floor_PubMarker = n1.advertise<visualization_msgs::Marker>("/zed2/zed_node/plane_marker", 1, false);
-    // ros::Publisher floor_PubPlane = n2.advertise<zed_interfaces::PlaneStamped>("zed2/zed_node/plane", 10, false);
-    ros::Publisher cmd_ConfigPub = cmd_config.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
-    ros::Publisher floor_EqPub = floor_eq.advertise<shape_msgs::Plane>("/zed2_floor_plane", 1, false);
+    ros::Publisher floor_PubMarker = nh.advertise<visualization_msgs::Marker>("/zed2/zed_node/plane_marker", 1, false);
+    // ros::Publisher floor_PubPlane = nh.advertise<zed_interfaces::PlaneStamped>("zed2/zed_node/plane", 10, false);
+    ros::Publisher cmd_ConfigPub = nh.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
+    ros::Publisher floor_EqPub = nh.advertise<shape_msgs::Plane>("/zed2_floor_plane", 1, false);
 
     ros::Rate loop_rate(ROS_loopRate);
 
     std_msgs::String msg;
+    msg.data = to_string((int)sl::VIDEO_SETTINGS::GAIN) + "," + to_string(open_gain);
+    cmd_ConfigPub.publish(msg);
 
     int exposure = open_exposure;
 
@@ -97,7 +98,7 @@ int main(int argc, char **argv)
     {
         int old_exposure = exposure;
         adjustCameraExposure(image_ocv, exposure);
-        if (exposure != old_exposure)
+        if (true)
         {
             msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
             cmd_ConfigPub.publish(msg);
@@ -138,8 +139,6 @@ int main(int argc, char **argv)
 
                             sl::float3 vector_normal = best_plane.getNormal();
                             sl::float4 eq = best_plane.getPlaneEquation();
-                            cout << "Floor plane normal -> a:" << vector_normal.x << " b:" << vector_normal.y << " c:" << vector_normal.z << endl;
-                            // cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
 
                             shape_msgs::Plane eqToPub;
                             eqToPub.coef.at(0) = eq.x;
@@ -201,6 +200,7 @@ void adjustCameraExposure(cv::Mat cv_image, int &exposure)
                 sum++;
         }
     }
+    
     x = 100 * double(sum) / (double(hsv.rows) * double(hsv.cols));
 
     if (x > maxExposure_thres)
