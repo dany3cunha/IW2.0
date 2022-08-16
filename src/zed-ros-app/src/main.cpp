@@ -1,19 +1,11 @@
 #include "headers.hpp"
 
-void pointCloud2_callback(const sensor_msgs::PointCloud2 &ptCloud)
-{
-
-    for (sensor_msgs::PointCloud2ConstIterator<float> it(ptCloud, "x"); it != it.end(); ++it)
-    {
-        // TODO: do something with the values of x, y, z
-        // std::cout << it[0] << ", " << it[1] << ", " << it[2] << '\n';
-    }
-}
 /**
  * Node main function
  */
 
 double x;
+
 int main(int argc, char **argv)
 {
 #if 1
@@ -94,8 +86,6 @@ int main(int argc, char **argv)
     ros::Publisher cmd_ConfigPub = cmd_config.advertise<std_msgs::String>("/zed2_cmd_config", 1, false);
     ros::Publisher floor_EqPub = floor_eq.advertise<shape_msgs::Plane>("/zed2_floor_plane", 1, false);
 
-    ros::Subscriber ptCloud_sub = pointCloud2_node.subscribe("/zed2/zed_node/point_cloud/cloud_registered", 10, pointCloud2_callback);
-
     ros::Rate loop_rate(ROS_loopRate);
 
     std_msgs::String msg;
@@ -148,8 +138,8 @@ int main(int argc, char **argv)
 
                             sl::float3 vector_normal = best_plane.getNormal();
                             sl::float4 eq = best_plane.getPlaneEquation();
-                            cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
-                            cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
+                            cout << "Floor plane normal -> a:" << vector_normal.x << " b:" << vector_normal.y << " c:" << vector_normal.z << endl;
+                            // cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
 
                             shape_msgs::Plane eqToPub;
                             eqToPub.coef.at(0) = eq.x;
@@ -226,7 +216,10 @@ void adjustCameraExposure(cv::Mat cv_image, int &exposure)
     }
     if (x < minExposure_thres)
     {
-        exposure++;
+        if (exposure <= 99)
+        {
+            exposure++;
+        }
     }
 
     cv::waitKey(10);
