@@ -1,0 +1,4 @@
+<launch>
+    <node name="zed_ros_floor_detection" pkg="zed-ros-app" type="zed-ros-app" output="screen" />
+    <node name="virtual_lidar" pkg="pcl-tutorial" type="pcl-tutorial" output="screen" />
+</launch>
