@@ -1,8 +1,0 @@
-prefix=/home/pc/Documents/GitHub/IW2.0/devel
-
-Name: rviz_plugin_zed_od
-Description: Description of rviz_plugin_zed_od
-Version: 0.1.0
-Cflags: 
-Libs: -L${prefix}/lib 
-Requires: zed_interfaces
