@@ -57,8 +57,8 @@ bool is_OnPlane(boost::array<double, 4UL> coef, pcl::PointXYZRGB point, float OF
 
   // if (a * point.x + b * point.y + c * point.z <= (d + OFFSET) * (1 + threshold))
   //   if (a * point.x + b * point.y + c * point.z >= (d + OFFSET) * (1 - threshold))
-  if (a * point.x + b * point.y + c * point.z <= (OFFSET + threshold))
-    if (a * point.x + b * point.y + c * point.z >= (OFFSET - threshold))
+  if (a * point.x + b * (point.y-0.2) + c * point.z <= (OFFSET + threshold))
+    if (a * point.x + b * (point.y-0.2) + c * point.z >= (OFFSET - threshold))
       return true;
   return false;
 }
@@ -107,7 +107,7 @@ void plane_cb(const shape_msgs::Plane plane)
           my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
           my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
         }
-        else if (distance >= 0.5)
+        else if (distance >= 0.6)
         {
           my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
           my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
