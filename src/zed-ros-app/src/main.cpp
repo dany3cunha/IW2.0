@@ -79,10 +79,9 @@ int main(int argc, char **argv)
     sl::Mat image_zed(new_width, new_height, MAT_TYPE::U8_C4);
     cv::Mat image_ocv = slMat2cvMat(image_zed);
     */
-    
+
     sl::Mat image_zed_gpu;
     cv::cuda::GpuMat frame_left_cuda;
-    
 
     ros::init(argc, argv, "zed_ros_floor_detection");
     ros::NodeHandle nh;
@@ -94,6 +93,7 @@ int main(int argc, char **argv)
 
     ros::Rate loop_rate(ROS_loopRate);
 
+    // Setup the gain to a fixed value at start
     std_msgs::String msg;
     msg.data = to_string((int)sl::VIDEO_SETTINGS::GAIN) + "," + to_string(open_gain);
     cmd_ConfigPub.publish(msg);
@@ -103,27 +103,16 @@ int main(int argc, char **argv)
     int plane_counter = 0;
     while (ros::ok())
     {
-        int old_exposure = exposure;
-        //adjustCameraExposure(image_ocv, exposure);
-
-        if (true)
-        {
-            msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
-            cmd_ConfigPub.publish(msg);
-            cout << "HSV: " << x << " %" << endl;
-            cout << "EXP: " << exposure << endl;
-        }
-
         if (zed.grab(runtime_parameters) == ERROR_CODE::SUCCESS)
         {
             // Retrieve image in GPU memory
-            //if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
+            // if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
             if (zed.retrieveImage(image_zed_gpu, VIEW::LEFT, MEM::GPU, new_image_size) == ERROR_CODE::SUCCESS)
             {
-                
                 frame_left_cuda = slMat2cvCudaMat(image_zed_gpu);
-                adjustCameraExposure(frame_left_cuda, exposure);
-                
+
+                // adjustCameraExposure(frame_left_cuda, exposure);
+
                 //  Update pose data (used for projection of the mesh over the current image)
                 tracking_state = zed.getPosition(pose);
 
@@ -179,6 +168,17 @@ int main(int argc, char **argv)
                         mesh.clear();
                     }
                 }
+
+                int old_exposure = exposure;
+                adjustCameraExposure(frame_left_cuda, exposure);
+
+                if (old_exposure != exposure)
+                {
+                    msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
+                    cmd_ConfigPub.publish(msg);
+                    cout << "HSV: " << x << " %" << endl;
+                    cout << "EXP: " << exposure << endl;
+                }
             }
         }
 
@@ -204,7 +204,7 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
     cv::cuda::cvtColor(cv_image, hsv, cv::COLOR_BGR2HSV);
     cv::Mat hsv_cpu;
     hsv.download(hsv_cpu);
-    
+
     /*
     cv::Mat hsv_cpu;
     cv::cvtColor(cv_image, hsv_cpu, cv::COLOR_BGR2HSV);
@@ -241,10 +241,10 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
             exposure++;
         }
     }
-    
+
     hsv_cpu.~Mat();
     hsv.~GpuMat();
-    
+
     cv::waitKey(10);
 }
 

@@ -136,6 +136,8 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr &cloud_msg)
 
 int main(int argc, char **argv)
 {
+  
+  pcl::console::setVerbosityLevel(pcl::console::L_ALWAYS);
   // Initialize ROS
   ros::init(argc, argv, "my_pcl_tutorial");
   ros::NodeHandle nh;
