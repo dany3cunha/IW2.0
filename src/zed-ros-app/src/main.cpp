@@ -197,7 +197,7 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void adjustCameraExposure(cv::CUDA::GpuMat cv_image, int &exposure)
+void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
 {
 
     cv::cuda::GpuMat hsv;
