@@ -26,12 +26,12 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr &cloud_msg)
 
   // Perform the actual filtering
 
-  /*pcl::VoxelGrid<pcl::PCLPointCloud2> sor;
+  pcl::VoxelGrid<pcl::PCLPointCloud2> sor;
 
   sor.setInputCloud(cloudPtr);
   sor.setLeafSize(0.01, 0.01, 0.01);
   sor.filter(cloud_filtered);
-  */
+  
   // std::cout << " Original: width " << cloud->width << " height " << cloud->height << std::endl;
   // std::cout << " Filter: width " << cloud_filtered.width << " height " << cloud_filtered.height << std::endl;
 
@@ -42,8 +42,10 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr &cloud_msg)
   // Publish the data
   // pub.publish(output);
 
+  //Filter
+  pcl::fromPCLPointCloud2(cloud_filtered, my_cloud);
   // Don't filter
-  pcl::fromPCLPointCloud2(*cloud, my_cloud);
+  //pcl::fromPCLPointCloud2(*cloud, my_cloud);
 }
 float threshold = 0.005;
 
@@ -57,8 +59,8 @@ bool is_OnPlane(boost::array<double, 4UL> coef, pcl::PointXYZRGB point, float OF
 
   // if (a * point.x + b * point.y + c * point.z <= (d + OFFSET) * (1 + threshold))
   //   if (a * point.x + b * point.y + c * point.z >= (d + OFFSET) * (1 - threshold))
-  if (a * point.x + b * point.y + c * point.z <= (OFFSET + threshold))
-    if (a * point.x + b * point.y + c * point.z >= (OFFSET - threshold))
+  if (a * point.x + b * (point.y-0.2) + c * point.z <= (OFFSET + threshold))
+    if (a * point.x + b * (point.y-0.2) + c * point.z >= (OFFSET - threshold))
       return true;
   return false;
 }
@@ -101,13 +103,13 @@ void plane_cb(const shape_msgs::Plane plane)
         my_cloud2.push_back(my_cloud.at(i));
         pcl::PointXYZRGB point = my_cloud2.points.at(my_cloud2.size() - 1);
         float distance = euclideanDistance(point);
-        if (distance >= 1.0)
+        if (distance >= 1.3)
         {
           my_cloud2.points.at(my_cloud2.size() - 1).r = 0;
           my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
           my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
         }
-        else if (distance >= 0.5)
+        else if (distance >= 0.8)
         {
           my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
           my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
