@@ -74,8 +74,15 @@ int main(int argc, char **argv)
 
     // To share data between sl::Mat and cv::Mat, use slMat2cvMat()
     // Only the headers and pointer to the sl::Mat are copied, not the data itself
+
+    /*
     sl::Mat image_zed(new_width, new_height, MAT_TYPE::U8_C4);
     cv::Mat image_ocv = slMat2cvMat(image_zed);
+    */
+    
+    sl::Mat image_zed_gpu;
+    cv::cuda::GpuMat frame_left_cuda;
+    
 
     ros::init(argc, argv, "zed_ros_floor_detection");
     ros::NodeHandle nh;
@@ -97,7 +104,8 @@ int main(int argc, char **argv)
     while (ros::ok())
     {
         int old_exposure = exposure;
-        adjustCameraExposure(image_ocv, exposure);
+        //adjustCameraExposure(image_ocv, exposure);
+
         if (true)
         {
             msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
@@ -109,9 +117,14 @@ int main(int argc, char **argv)
         if (zed.grab(runtime_parameters) == ERROR_CODE::SUCCESS)
         {
             // Retrieve image in GPU memory
-            if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
+            //if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
+            if (zed.retrieveImage(image_zed_gpu, VIEW::LEFT, MEM::GPU, new_image_size) == ERROR_CODE::SUCCESS)
             {
-                // Update pose data (used for projection of the mesh over the current image)
+                
+                frame_left_cuda = slMat2cvCudaMat(image_zed_gpu);
+                adjustCameraExposure(frame_left_cuda, exposure);
+                
+                //  Update pose data (used for projection of the mesh over the current image)
                 tracking_state = zed.getPosition(pose);
 
                 if (tracking_state == POSITIONAL_TRACKING_STATE::OK)
@@ -148,6 +161,7 @@ int main(int argc, char **argv)
 
                             // Publish the marker (as green mesh)
                             floor_PubMarker.publish(plane_marker);
+
                             floor_EqPub.publish(eqToPub);
 
                             // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
@@ -183,25 +197,31 @@ int main(int argc, char **argv)
     return 0;
 }
 
-void adjustCameraExposure(cv::Mat cv_image, int &exposure)
+void adjustCameraExposure(cv::CUDA::GpuMat cv_image, int &exposure)
 {
 
-    cv::Mat hsv;
-    cv::cvtColor(cv_image, hsv, cv::COLOR_BGR2HSV);
-
+    cv::cuda::GpuMat hsv;
+    cv::cuda::cvtColor(cv_image, hsv, cv::COLOR_BGR2HSV);
+    cv::Mat hsv_cpu;
+    hsv.download(hsv_cpu);
+    
+    /*
+    cv::Mat hsv_cpu;
+    cv::cvtColor(cv_image, hsv_cpu, cv::COLOR_BGR2HSV);
+    */
     int sum = 0;
 
-    for (int i = 0; i < hsv.rows; i++)
+    for (int i = 0; i < hsv_cpu.rows; i++)
     {
-        for (int j = 0; j < hsv.cols; j++)
+        for (int j = 0; j < hsv_cpu.cols; j++)
         {
-            cv::Vec3b HSV = hsv.at<cv::Vec3b>(i, j);
+            cv::Vec3b HSV = hsv_cpu.at<cv::Vec3b>(i, j);
             if (HSV.val[2] > 200)
                 sum++;
         }
     }
-    
-    x = 100 * double(sum) / (double(hsv.rows) * double(hsv.cols));
+
+    x = 100 * double(sum) / (double(hsv_cpu.rows) * double(hsv_cpu.cols));
 
     if (x > maxExposure_thres)
     {
@@ -221,7 +241,10 @@ void adjustCameraExposure(cv::Mat cv_image, int &exposure)
             exposure++;
         }
     }
-
+    
+    hsv_cpu.~Mat();
+    hsv.~GpuMat();
+    
     cv::waitKey(10);
 }
 
@@ -407,6 +430,46 @@ int getOCVtype(sl::MAT_TYPE type)
         break;
     }
     return cv_type;
+}
+
+/**
+ * Conversion function between sl::Mat and cv::Mat
+ **/
+cv::cuda::GpuMat slMat2cvCudaMat(sl::Mat &input)
+{
+    // Mapping between MAT_TYPE and CV_TYPE
+    int cv_type = -1;
+    switch (input.getDataType())
+    {
+    case sl::MAT_TYPE::F32_C1:
+        cv_type = CV_32FC1;
+        break;
+    case sl::MAT_TYPE::F32_C2:
+        cv_type = CV_32FC2;
+        break;
+    case MAT_TYPE::F32_C3:
+        cv_type = CV_32FC3;
+        break;
+    case MAT_TYPE::F32_C4:
+        cv_type = CV_32FC4;
+        break;
+    case MAT_TYPE::U8_C1:
+        cv_type = CV_8UC1;
+        break;
+    case MAT_TYPE::U8_C2:
+        cv_type = CV_8UC2;
+        break;
+    case MAT_TYPE::U8_C3:
+        cv_type = CV_8UC3;
+        break;
+    case MAT_TYPE::U8_C4:
+        cv_type = CV_8UC4;
+        break;
+    default:
+        break;
+    }
+
+    return cv::cuda::GpuMat(input.getHeight(), input.getWidth(), cv_type, input.getPtr<sl::uchar1>(sl::MEM::GPU));
 }
 
 void planesVectors(sl::Plane plane, sl::Camera zed)

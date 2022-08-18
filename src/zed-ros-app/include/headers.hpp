@@ -19,6 +19,9 @@
 #include <opencv2/imgproc.hpp>
 #include <opencv2/highgui.hpp>
 
+#include "opencv2/core/cuda.hpp"
+#include <opencv2/cudaimgproc.hpp>
+
 // OpenCV dep
 #include <opencv2/cvconfig.h>
 #include <bits/stdc++.h>
@@ -41,11 +44,12 @@ using namespace sl;
 void meshToPlaneMarker(visualization_msgs::MarkerPtr &plane_marker, sl::Mesh mesh, sl::Pose pose);
 void planeAsCustomMessage(zed_interfaces::PlaneStampedPtr &planeMsg, sl::Plane plane);
 cv::Mat slMat2cvMat(sl::Mat &input);
+cv::cuda::GpuMat slMat2cvCudaMat(sl::Mat &input);
 /**
  * @brief Mapping between MAT_TYPE and CV_TYPE
  * @param type 
  * @return int 
  */
 int getOCVtype(sl::MAT_TYPE type);
-void adjustCameraExposure(cv::Mat cv_image, int &exposure);
+void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure);
 void planesVectors(Plane plane, Camera zed);

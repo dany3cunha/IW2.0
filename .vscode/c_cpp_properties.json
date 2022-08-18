@@ -11,6 +11,7 @@
         "/usr/local/cuda-11.7/include",
         "/home/pc/Documents/GitHub/IW2.0/devel/include/**",
         "/opt/ros/melodic/include/**",
+        "/usr/local/include/opencv4/opencv2",
         "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-app/include/**",
         "/home/pc/Documents/GitHub/IW2.0/src/zed-ros-wrapper/zed-ros-interfaces/include/**",
         "/home/pc/Documents/GitHub/IW2.0/src/zed_ros_floor_detection/include/**",
