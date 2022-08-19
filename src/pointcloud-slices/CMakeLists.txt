@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(pcl-tutorial)
+project(pointcloud-slices)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -104,7 +104,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
-  LIBRARIES pcl-tutorial
+  LIBRARIES pointcloud-slices
   CATKIN_DEPENDS pcl_conversions pcl_ros roscpp sensor_msgs
   DEPENDS system_lib
 )
@@ -121,7 +121,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/pcl-tutorial.cpp
+#   src/${PROJECT_NAME}/pointcloud-slices.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -132,7 +132,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-add_executable(${PROJECT_NAME} src/example_voxelgrid.cpp)
+add_executable(${PROJECT_NAME} src/main.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -196,7 +196,7 @@ add_executable(${PROJECT_NAME} src/example_voxelgrid.cpp)
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_pcl-tutorial.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_pointcloud-slices.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

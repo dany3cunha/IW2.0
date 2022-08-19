@@ -138,8 +138,8 @@ int main(int argc, char **argv)
 {
   
   pcl::console::setVerbosityLevel(pcl::console::L_ALWAYS);
-  // Initialize ROS
-  ros::init(argc, argv, "my_pcl_tutorial");
+
+  ros::init(argc, argv, "pointcloud_slices");
   ros::NodeHandle nh;
 
   // Create a ROS subscriber for the input point cloud
