@@ -9,6 +9,8 @@
 #include <pcl/filters/voxel_grid.h>
 #include <cmath>
 
+using namespace std;
+
 ros::Publisher pub;
 boost::array<double, 4UL> current_planeCoefs;
 
@@ -50,47 +52,48 @@ bool is_OnCurrentPlane(pcl::PointXYZRGB point, float OFFSET)
 
 sensor_msgs::PointCloud2 create_PointCloudSlices(pcl::PointCloud<pcl::PointXYZRGB> my_cloud)
 {
-  pcl::PointCloud<pcl::PointXYZRGB> my_cloud2;
-  my_cloud2 = my_cloud;
-  my_cloud2.clear();
+ 
+ pcl::PointCloud<pcl::PointXYZRGB> my_cloud2;
+ my_cloud2 = my_cloud;
+ my_cloud2.clear();
 
-  float init_OFFSET = 0.7;
-  float incr = 0.05;
-  float curr_OFFSET = -init_OFFSET;
-  while (curr_OFFSET <= init_OFFSET)
-  {
-    for (int i = 0; i < my_cloud.size(); i++)
-    {
+ float init_OFFSET = 0.7;
+ float incr = 0.05;
+ float curr_OFFSET = -init_OFFSET;
 
-      if (is_OnCurrentPlane(my_cloud.at(i), curr_OFFSET))
-      {
-        my_cloud2.push_back(my_cloud.at(i));
-        pcl::PointXYZRGB point = my_cloud2.points.at(my_cloud2.size() - 1);
-        float distance = euclideanDistance(point);
-        if (distance >= 1.3)
-        {
-          my_cloud2.points.at(my_cloud2.size() - 1).r = 0;
-          my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
-          my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
-        }
-        else if (distance >= 0.8)
-        {
-          my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
-          my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
-          my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
-        }
-        else
-        {
-          my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
-          my_cloud2.points.at(my_cloud2.size() - 1).g = 0;
-          my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
-        }
-      }
-    }
+ while (/*true*/curr_OFFSET <= init_OFFSET)
+ {
+   for (int i = 0; i < my_cloud.size(); i++)
+   {
 
-    curr_OFFSET = curr_OFFSET + incr;
-  }
-
+     if (is_OnCurrentPlane(my_cloud.at(i), curr_OFFSET))
+     {
+       my_cloud2.push_back(my_cloud.at(i));
+       pcl::PointXYZRGB point = my_cloud2.points.at(my_cloud2.size() - 1);
+       float distance = euclideanDistance(point);
+       if (distance >= 1.3)
+       {
+         my_cloud2.points.at(my_cloud2.size() - 1).r = 0;
+         my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
+         my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
+       }
+       else if (distance >= 0.8)
+       {
+         my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
+         my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
+         my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
+       }
+       else
+       {
+         my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
+         my_cloud2.points.at(my_cloud2.size() - 1).g = 0;
+         my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
+       }
+     }
+   }
+   
+   curr_OFFSET = curr_OFFSET + incr;
+ }
   pcl::PCLPointCloud2 virtual_Laser;
   pcl::toPCLPointCloud2(my_cloud2, virtual_Laser);
 
@@ -105,7 +108,7 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr &cloud_msg)
 {
   if (planeCoefsEmpty())
     return;
-  
+
   // Container for original & filtered data
   pcl::PCLPointCloud2 *cloud = new pcl::PCLPointCloud2;
   pcl::PCLPointCloud2ConstPtr cloudPtr(cloud);
@@ -131,12 +134,13 @@ void cloud_cb(const sensor_msgs::PointCloud2ConstPtr &cloud_msg)
   }
 
   sensor_msgs::PointCloud2 output = create_PointCloudSlices(final_cloud);
+
   pub.publish(output);
 }
 
 int main(int argc, char **argv)
 {
-  
+
   pcl::console::setVerbosityLevel(pcl::console::L_ALWAYS);
 
   ros::init(argc, argv, "pointcloud_slices");
@@ -147,7 +151,7 @@ int main(int argc, char **argv)
   ros::Subscriber sub2 = nh.subscribe<shape_msgs::Plane>("/zed2_floor_plane", 1, plane_cb);
 
   // Create a ROS publisher for the output point cloud
-  pub = nh.advertise<sensor_msgs::PointCloud2>("output", 1);
+  pub = nh.advertise<sensor_msgs::PointCloud2>("/output", 1);
 
   // Spin
   ros::spin();

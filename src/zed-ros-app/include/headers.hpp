@@ -33,7 +33,7 @@
 using namespace std;
 using namespace sl;
 
-#define ROS_loopRate 10
+#define ROS_loopRate 5
 #define planeDuration 1 // plane duration on rviz publication in seconds
 #define open_exposure 10 // inital exposure in opening camera
 #define open_gain 10 // constant pretended gain 

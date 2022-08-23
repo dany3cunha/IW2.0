@@ -4,7 +4,6 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
-        - /Video1/Camera view1
         - /Video1/Camera view1/Visibility1
         - /Depth1/PointCloud21
         - /Depth1/DepthCloud1/Auto Size1
@@ -20,6 +19,7 @@ Panels:
         - /Pose1/Imu1/Acceleration properties1
         - /Mapping1/Fused Pointcloud1
         - /Planes1/Namespaces1
+        - /PointCloud21
       Splitter Ratio: 0.49240779876708984
     Tree Height: 448
   - Class: rviz/Selection
@@ -553,7 +553,7 @@ Visualization Manager:
       Marker Topic: /zed2/zed_node/plane_marker
       Name: Planes
       Namespaces:
-        {}
+        plane_meshes: true
       Queue Size: 5
       Value: true
     - Alpha: 1
@@ -577,9 +577,9 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.019999999552965164
       Style: Flat Squares
-      Topic: /zed/scan
+      Topic: /zed2/scan
       Unreliable: false
       Use Fixed Frame: true
       Use rainbow: true
@@ -587,8 +587,8 @@ Visualization Manager:
     - Alpha: 1
       Autocompute Intensity Bounds: true
       Autocompute Value Bounds:
-        Max Value: 10
-        Min Value: -10
+        Max Value: 0.33657073974609375
+        Min Value: 0.1762973964214325
         Value: true
       Axis: Z
       Channel Name: intensity
@@ -605,7 +605,7 @@ Visualization Manager:
       Queue Size: 10
       Selectable: true
       Size (Pixels): 3
-      Size (m): 0.009999999776482582
+      Size (m): 0.019999999552965164
       Style: Flat Squares
       Topic: /output
       Unreliable: false
@@ -640,25 +640,25 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz/Orbit
-      Distance: 4.11702299118042
+      Distance: 3.7636663913726807
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 0.7435482144355774
-        Y: 0.4967662990093231
-        Z: 0.194851353764534
+        X: 0.9498104453086853
+        Y: -0.3040434420108795
+        Z: 0.1850067377090454
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Pitch: -0.06520205736160278
+      Pitch: 0.4197973310947418
       Target Frame: base_link
       Value: Orbit (rviz)
-      Yaw: 3.258662223815918
+      Yaw: 3.033684492111206
     Saved: ~
 Window Geometry:
   Camera view:

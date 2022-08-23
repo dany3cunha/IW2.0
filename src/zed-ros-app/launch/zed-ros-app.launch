@@ -1,4 +1,28 @@
 <launch>
+
+    <arg name="camera_model"         default="zed2" />
+    <!-- Name of the Nodelet Manager -->
+    <arg name="nodelet_manager_name" default="$(arg camera_model)_nodelet_manager" />
+
     <node name="zed_ros_floor_detection" pkg="zed-ros-app" type="zed-ros-app" output="screen" />
     <node name="pointcloud_slices" pkg="pointcloud-slices" type="pointcloud-slices" output="screen" />
+
+    <group ns="$(arg camera_model)">
+        <!-- Nodelet Manager -->
+        <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager" output="screen" />
+
+        <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan" args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet $(arg nodelet_manager_name)">
+            <param name="min_height" value="-1.0" />
+            <param name="max_height" value="1.0" />
+            <param name="angle_min" value="-0.61" />
+            <param name="angle_max" value="0.61" />
+            <param name="angle_increment" value="3.14/70" />
+            <param name="range_min" value="0.3" />
+            <param name="range_max" value="20.0" />
+            <param name="target_frame" value="odom" /> 
+
+            <remap from="cloud_in" to="/output" />
+        </node>
+    </group>
+
 </launch>

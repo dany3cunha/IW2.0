@@ -225,9 +225,9 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
 
     if (x > maxExposure_thres)
     {
-        if (exposure > 1)
+        if (exposure >= 2)
         {
-            exposure--;
+            exposure -= 2;
         }
         else
         {
@@ -236,9 +236,9 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
     }
     if (x < minExposure_thres)
     {
-        if (exposure <= 99)
+        if (exposure <= 98)
         {
-            exposure++;
+            exposure += 2;
         }
     }
 
