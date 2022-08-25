@@ -117,7 +117,7 @@ public:
 
 string name = "plane_segmentation";
 double max_distance = 0.1;
-double min_percentage = 20;
+double min_percentage = 5;
 bool color_pc_with_error = false;
 std::vector<Color> colors;
 
