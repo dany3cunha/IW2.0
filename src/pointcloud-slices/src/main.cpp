@@ -34,9 +34,9 @@ bool planeCoefsEmpty()
   return false;
 }
 
-bool is_OnCurrentPlane(pcl::PointXYZRGB point, float OFFSET)
+bool is_OnCurrentPlane(pcl::PointXYZRGB point, double OFFSET)
 {
-  float threshold = 0.005;
+  double threshold = 0.005;
   auto a = current_planeCoefs.at(0);
   auto b = current_planeCoefs.at(1);
   auto c = current_planeCoefs.at(2);
@@ -44,56 +44,59 @@ bool is_OnCurrentPlane(pcl::PointXYZRGB point, float OFFSET)
   // float OFFSET = -0.8;
   // if (a * point.x + b * point.y + c * point.z <= (d + OFFSET) * (1 + threshold))
   //   if (a * point.x + b * point.y + c * point.z >= (d + OFFSET) * (1 - threshold))
-  if (a * point.x + b * (point.y - 0.2) + c * point.z <= (OFFSET + threshold))
-    if (a * point.x + b * (point.y - 0.2) + c * point.z >= (OFFSET - threshold))
+  // std::cout << "d: " << d << std::endl;
+
+  if (a * point.x + b * (point.y) + c * point.z <= (OFFSET + threshold))
+    if (a * point.x + b * (point.y) + c * point.z >= (OFFSET - threshold))
       return true;
   return false;
 }
 
 sensor_msgs::PointCloud2 create_PointCloudSlices(pcl::PointCloud<pcl::PointXYZRGB> my_cloud)
 {
- 
- pcl::PointCloud<pcl::PointXYZRGB> my_cloud2;
- my_cloud2 = my_cloud;
- my_cloud2.clear();
 
- float init_OFFSET = 0.7;
- float incr = 0.05;
- float curr_OFFSET = -init_OFFSET;
+  pcl::PointCloud<pcl::PointXYZRGB> my_cloud2;
+  my_cloud2 = my_cloud;
+  my_cloud2.clear();
 
- while (/*true*/curr_OFFSET <= init_OFFSET)
- {
-   for (int i = 0; i < my_cloud.size(); i++)
-   {
+  double plane_coef_d = current_planeCoefs.at(3);
+  double init_OFFSET = 1.2*plane_coef_d;
+  double incr = 0.05;
+  double curr_OFFSET = -plane_coef_d + 0.10*init_OFFSET;
 
-     if (is_OnCurrentPlane(my_cloud.at(i), curr_OFFSET))
-     {
-       my_cloud2.push_back(my_cloud.at(i));
-       pcl::PointXYZRGB point = my_cloud2.points.at(my_cloud2.size() - 1);
-       float distance = euclideanDistance(point);
-       if (distance >= 1.3)
-       {
-         my_cloud2.points.at(my_cloud2.size() - 1).r = 0;
-         my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
-         my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
-       }
-       else if (distance >= 0.8)
-       {
-         my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
-         my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
-         my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
-       }
-       else
-       {
-         my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
-         my_cloud2.points.at(my_cloud2.size() - 1).g = 0;
-         my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
-       }
-     }
-   }
-   
-   curr_OFFSET = curr_OFFSET + incr;
- }
+  while (curr_OFFSET <= init_OFFSET)
+  {
+    for (int i = 0; i < my_cloud.size(); i++)
+    {
+
+      if (is_OnCurrentPlane(my_cloud.at(i), curr_OFFSET))
+      {
+        my_cloud2.push_back(my_cloud.at(i));
+        pcl::PointXYZRGB point = my_cloud2.points.at(my_cloud2.size() - 1);
+        float distance = euclideanDistance(point);
+        if (distance >= 1.3)
+        {
+          my_cloud2.points.at(my_cloud2.size() - 1).r = 0;
+          my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
+          my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
+        }
+        else if (distance >= 0.8)
+        {
+          my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
+          my_cloud2.points.at(my_cloud2.size() - 1).g = 255;
+          my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
+        }
+        else
+        {
+          my_cloud2.points.at(my_cloud2.size() - 1).r = 255;
+          my_cloud2.points.at(my_cloud2.size() - 1).g = 0;
+          my_cloud2.points.at(my_cloud2.size() - 1).b = 0;
+        }
+      }
+    }
+
+    curr_OFFSET = curr_OFFSET + incr;
+  }
   pcl::PCLPointCloud2 virtual_Laser;
   pcl::toPCLPointCloud2(my_cloud2, virtual_Laser);
 
