@@ -105,9 +105,9 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-  LIBRARIES lidar-frame
-  CATKIN_DEPENDS roscpp rospy std_msgs tf
-  DEPENDS system_lib
+#  LIBRARIES lidar-frame
+#  CATKIN_DEPENDS roscpp rospy std_msgs tf
+#DEPENDS system_lib
 )
 
 ###########

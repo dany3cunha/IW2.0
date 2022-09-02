@@ -1,27 +1,27 @@
 #include "headers.hpp"
 
-/**
- * Node main function
- */
-
-double x;
-
 int main(int argc, char **argv)
 {
-#if 0
-    auto streaming_devices = Camera::getStreamingDeviceList();
-    int nb_streaming_zed = streaming_devices.size();
+    ros::init(argc, argv, "zed_ros_floor_detection");
+    ros::NodeHandle nh;
 
-    cout << "Detect: " + to_string(nb_streaming_zed) + " ZED in streaming" << endl;
-    if (nb_streaming_zed == 0)
+    readROSparams();
+
+    if (printCameraInfo)
     {
-        cout << "No streaming ZED detected, have you take a look to the sample 'ZED Streaming Sender' ?" << endl;
-        return 0;
-    }
+        auto streaming_devices = Camera::getStreamingDeviceList();
+        int nb_streaming_zed = streaming_devices.size();
 
-    for (auto &it : streaming_devices)
-        cout << "* ZED: " << it.serial_number << ", IP: " << it.ip << ", port : " << it.port << ", bitrate : " << it.current_bitrate << "\n";
-#endif
+        cout << "Detect: " + to_string(nb_streaming_zed) + " ZED in streaming" << endl;
+        if (nb_streaming_zed == 0)
+        {
+            cout << "No streaming ZED detected, have you take a look to the sample 'ZED Streaming Sender' ?" << endl;
+            return 0;
+        }
+
+        for (auto &it : streaming_devices)
+            cout << "* ZED: " << it.serial_number << ", IP: " << it.ip << ", port : " << it.port << ", bitrate : " << it.current_bitrate << "\n";
+    }
 
     Camera zed;
     // Setup configuration parameters for the ZED
@@ -39,11 +39,13 @@ int main(int argc, char **argv)
         return EXIT_FAILURE;
     }
 
-    auto camera_info = zed.getCameraInformation();
-    cout << endl;
-    cout << "ZED Camera Resolution     : " << camera_info.camera_configuration.resolution.width << "x" << camera_info.camera_configuration.resolution.height << endl;
-    cout << "ZED Camera FPS            : " << zed.getInitParameters().camera_fps << endl;
-
+    if (printCameraInfo)
+    {
+        auto camera_info = zed.getCameraInformation();
+        cout << endl;
+        cout << "ZED Camera Resolution     : " << camera_info.camera_configuration.resolution.width << "x" << camera_info.camera_configuration.resolution.height << endl;
+        cout << "ZED Camera FPS            : " << zed.getInitParameters().camera_fps << endl;
+    }
     Mat image;        // current left image
     Pose pose;        // positional tracking data
     Plane plane;      // detected plane
@@ -72,19 +74,8 @@ int main(int argc, char **argv)
     int new_height = image_size.height / 2;
     Resolution new_image_size(new_width, new_height);
 
-    // To share data between sl::Mat and cv::Mat, use slMat2cvMat()
-    // Only the headers and pointer to the sl::Mat are copied, not the data itself
-
-    /*
-    sl::Mat image_zed(new_width, new_height, MAT_TYPE::U8_C4);
-    cv::Mat image_ocv = slMat2cvMat(image_zed);
-    */
-
     sl::Mat image_zed_gpu;
     cv::cuda::GpuMat frame_left_cuda;
-
-    ros::init(argc, argv, "zed_ros_floor_detection");
-    ros::NodeHandle nh;
 
     ros::Publisher floor_PubMarker = nh.advertise<visualization_msgs::Marker>("/zed2/zed_node/plane_marker", 1, false);
     // ros::Publisher floor_PubPlane = nh.advertise<zed_interfaces::PlaneStamped>("zed2/zed_node/plane", 10, false);
@@ -106,12 +97,10 @@ int main(int argc, char **argv)
         if (zed.grab(runtime_parameters) == ERROR_CODE::SUCCESS)
         {
             // Retrieve image in GPU memory
-            // if (zed.retrieveImage(image_zed, VIEW::LEFT, MEM::CPU, new_image_size) == ERROR_CODE::SUCCESS)
+
             if (zed.retrieveImage(image_zed_gpu, VIEW::LEFT, MEM::GPU, new_image_size) == ERROR_CODE::SUCCESS)
             {
                 frame_left_cuda = slMat2cvCudaMat(image_zed_gpu);
-
-                // adjustCameraExposure(frame_left_cuda, exposure);
 
                 //  Update pose data (used for projection of the mesh over the current image)
                 tracking_state = zed.getPosition(pose);
@@ -153,11 +142,12 @@ int main(int argc, char **argv)
 
                             floor_EqPub.publish(eqToPub);
 
+                            // Publish plane as custom message ---->
                             // zed_interfaces::PlaneStampedPtr planeMsg = boost::make_shared<zed_interfaces::PlaneStamped>();
-                            //  planeAsCustomMessage(planeMsg, plane);
-                            //   Publish custom message
-                            //   floor_PubPlane.publish(planeMsg);
-                            //   <---- Publish plane as custom message
+                            // planeAsCustomMessage(planeMsg, plane);
+                            // Publish custom message
+                            // floor_PubPlane.publish(planeMsg);
+                            //<---- Publish plane as custom message
 
                             best_mesh.clear();
                             plane_counter = 0;
@@ -169,15 +159,21 @@ int main(int argc, char **argv)
                     }
                 }
 
-                int old_exposure = exposure;
-                adjustCameraExposure(frame_left_cuda, exposure);
-
-                if (old_exposure != exposure)
+                if (use_MEC)
                 {
-                    msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
-                    cmd_ConfigPub.publish(msg);
-                    cout << "HSV: " << x << " %" << endl;
-                    cout << "EXP: " << exposure << endl;
+                    int old_exposure = exposure;
+                    adjustCameraExposure(frame_left_cuda, exposure);
+
+                    if (old_exposure != exposure)
+                    {
+                        msg.data = to_string((int)sl::VIDEO_SETTINGS::EXPOSURE) + "," + to_string(exposure);
+                        cmd_ConfigPub.publish(msg);
+                        if (printExposureInfo)
+                        {
+                            cout << "HSV: " << hsv_percentage << " %" << endl;
+                            cout << "EXP: " << exposure << endl;
+                        }
+                    }
                 }
             }
         }
@@ -205,10 +201,6 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
     cv::Mat hsv_cpu;
     hsv.download(hsv_cpu);
 
-    /*
-    cv::Mat hsv_cpu;
-    cv::cvtColor(cv_image, hsv_cpu, cv::COLOR_BGR2HSV);
-    */
     int sum = 0;
 
     for (int i = 0; i < hsv_cpu.rows; i++)
@@ -221,9 +213,9 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
         }
     }
 
-    x = 100 * double(sum) / (double(hsv_cpu.rows) * double(hsv_cpu.cols));
+    hsv_percentage = 100 * double(sum) / (double(hsv_cpu.rows) * double(hsv_cpu.cols));
 
-    if (x > maxExposure_thres)
+    if (hsv_percentage > maxExposure_thres)
     {
         if (exposure >= 2)
         {
@@ -234,16 +226,17 @@ void adjustCameraExposure(cv::cuda::GpuMat cv_image, int &exposure)
             exposure = 0;
         }
     }
-    if (x < minExposure_thres)
+    if (hsv_percentage < minExposure_thres)
     {
         if (exposure <= 98)
         {
             exposure += 2;
         }
     }
-
+    
     hsv_cpu.~Mat();
     hsv.~GpuMat();
+    
 
     cv::waitKey(10);
 }
@@ -389,52 +382,6 @@ void planeAsCustomMessage(zed_interfaces::PlaneStampedPtr &planeMsg, sl::Plane p
     }
 }
 
-cv::Mat slMat2cvMat(sl::Mat &input)
-{
-
-    // Since cv::Mat data requires a uchar* pointer, we get the uchar1 pointer from sl::Mat (getPtr<T>())
-    // cv::Mat and sl::Mat will share a single memory structure
-    return cv::Mat(input.getHeight(), input.getWidth(), getOCVtype(input.getDataType()), input.getPtr<sl::uchar1>(sl::MEM::CPU), input.getStepBytes(sl::MEM::CPU));
-}
-
-int getOCVtype(sl::MAT_TYPE type)
-{
-    int cv_type = -1;
-    switch (type)
-    {
-    case sl::MAT_TYPE::F32_C1:
-        cv_type = CV_32FC1;
-        break;
-    case sl::MAT_TYPE::F32_C2:
-        cv_type = CV_32FC2;
-        break;
-    case sl::MAT_TYPE::F32_C3:
-        cv_type = CV_32FC3;
-        break;
-    case sl::MAT_TYPE::F32_C4:
-        cv_type = CV_32FC4;
-        break;
-    case sl::MAT_TYPE::U8_C1:
-        cv_type = CV_8UC1;
-        break;
-    case sl::MAT_TYPE::U8_C2:
-        cv_type = CV_8UC2;
-        break;
-    case sl::MAT_TYPE::U8_C3:
-        cv_type = CV_8UC3;
-        break;
-    case sl::MAT_TYPE::U8_C4:
-        cv_type = CV_8UC4;
-        break;
-    default:
-        break;
-    }
-    return cv_type;
-}
-
-/**
- * Conversion function between sl::Mat and cv::Mat
- **/
 cv::cuda::GpuMat slMat2cvCudaMat(sl::Mat &input)
 {
     // Mapping between MAT_TYPE and CV_TYPE
@@ -472,22 +419,35 @@ cv::cuda::GpuMat slMat2cvCudaMat(sl::Mat &input)
     return cv::cuda::GpuMat(input.getHeight(), input.getWidth(), cv_type, input.getPtr<sl::uchar1>(sl::MEM::GPU));
 }
 
-void planesVectors(sl::Plane plane, sl::Camera zed)
+void readROSparams()
 {
-    sl::float3 vector_normal = plane.getNormal();
-    sl::float4 eq = plane.getPlaneEquation();
-    SensorsData sensors_data;
-    SensorsData::IMUData imu_data;
 
-    zed.getSensorsData(sensors_data, TIME_REFERENCE::IMAGE); // Retrieve only frame synchronized data
+    if (ros::param::has("/loopRate"))
+        ros::param::get("/loopRate", ROS_loopRate);
 
-    // Extract IMU data
-    imu_data = sensors_data.imu;
+    if (ros::param::has("/printCameraInfo"))
+        ros::param::get("/printCameraInfo", printCameraInfo);
 
-    // Retrieve linear acceleration and angular velocity
-    sl::float3 linear_acceleration = imu_data.linear_acceleration;
+    if (ros::param::has("/planeDuration"))
+        ros::param::get("/planeDuration", planeDuration);
 
-    cout << "Camera normal(x,y,z) " << linear_acceleration.x << " " << linear_acceleration.y << " " << linear_acceleration.z << endl;
-    cout << "Floor normal(x,y,z) " << vector_normal.x << " " << vector_normal.y << " " << vector_normal.z << endl;
-    cout << "Floor plane ax+by+cz=d " << eq.x << " " << eq.y << " " << eq.z << " " << eq.w << endl;
+    if (ros::param::has("/open_exposure"))
+        ros::param::get("/open_exposure", open_exposure);
+
+    if (ros::param::has("/open_gain"))
+        ros::param::get("/open_gain", open_gain);
+
+    if (ros::param::has("/use_MEC"))
+        ros::param::get("/use_MEC", use_MEC);
+    if (use_MEC)
+    {
+        if (ros::param::has("/minExposure"))
+            ros::param::get("/minExposure", minExposure_thres);
+
+        if (ros::param::has("/maxExposure"))
+            ros::param::get("/maxExposure", maxExposure_thres);
+
+        if (ros::param::has("/printExposureInfo"))
+            ros::param::get("/printExposureInfo", printExposureInfo);
+    }
 }

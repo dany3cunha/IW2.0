@@ -1,17 +1,55 @@
 <launch>
 
-    <arg name="camera_model"         default="zed2" />
-    <!-- Name of the Nodelet Manager -->
-    <arg name="nodelet_manager_name" default="$(arg camera_model)_nodelet_manager" />
+    <arg name="svo_file" default="" /> <!-- <arg name="svo_file" default="path/to/svo/file.svo"> -->
+    <arg name="stream" default="" /> <!-- <arg name="stream" default="<ip_address>:<port>"> -->
+    <arg name="camera_model" default="zed2" />
 
-    <node name="zed_ros_floor_detection" pkg="zed-ros-app" type="zed-ros-app" output="screen" />
+    <arg name="nodelet_manager_name" default="$(arg camera_model)_nodelet_manager" /> <!-- Name of the Nodelet Manager -->
+    <arg name="node_start_delay" default="5.0" />
+
+    <!-- Launch ZED camera wrapper -->
+    <include file="$(find zed_wrapper)/launch/$(arg camera_model).launch">
+        <arg name="camera_model" value="$(arg camera_model)" />
+        <arg name="svo_file" value="$(arg svo_file)" />
+        <arg name="stream" value="$(arg stream)" />
+    </include>
+
+    <!-- Launch rivz display -->
+    <node name="rviz" pkg="rviz" type="rviz" args="-d $(find zed-ros-app)/rviz/$(arg camera_model).rviz" output="screen" />
+
+    <!-- /* Floor Detection -->
+    <param name="loopRate" type="int" value="5" /> <!--default: 5 Hz -->
+    <param name="printCameraInfo" type="bool" value ="false" /> 
+    <param name="planeDuration" type="int" value="1" /> <!--plane duration on rviz publication in seconds -->
+    <param name="open_exposure" type="int" value="10" /> <!--inital exposure in opening camera -->
+    <param name="open_gain" type="int" value="10" /> <!--constant pretended gain -->
+    <param name="use_MEC" type="bool" value="true" /> <!-- Use manual exposure control while ZED SDK don't fix auto exposure control for local streaming -->
+    <param name="minExposure" type="double" value="0.05" /> <!--minimal exposure percentage, if lower than this value then exposure increase -->
+    <param name="maxExposure" type="double" value="5.00" /> <!--maximum exposure percentage, if grater than this value then exposure decreases -->
+    <param name="printExposureInfo" type="bool" value="false" /> <!-- Print exposure value when it changes-->
+    
+    <node name="zed_ros_floor_detection" pkg="zed-ros-app" type="zed-ros-app" output="screen" launch-prefix="bash -c 'sleep $(arg node_start_delay); $0 $@' " />
+    <!-- */ Floor Detection -->
+
+    <!--/* Point Cloud handling -->
+    <!--For biggers distances than safe zone, it's colored green 
+        Between safe and danger zone, it's colored yellow
+        Else it's red.   -->
+    <param name="safe_zone" type="double" value="1.3" /> <!-- default: 1.3 m -->
+    <param name="danger_zone" type="double" value="0.8" /> <!-- default: 0.8 m -->
+    <param name="distance_between_slices" type="double" value="0.05" /> <!-- default: 0.05 -->
+    <param name="static_height" type="bool" value="false" /> <!-- default: false-->
+    <param name="static_height_value" type="double" value="1.0" />
+    <param name="relative_height_value" type="double" value="0.2" /> <!-- default: 0.2 value:]0.0;1.0[ -->
+    <param name="use_voxelgrid" type="bool" value="true" /> <!-- default: true -->
+
     <node name="pointcloud_slices" pkg="pointcloud-slices" type="pointcloud-slices" output="screen" />
-    <node name="lidar_frame" pkg="lidar-frame" type="lidar-frame" output="screen" />
+    <!-- */ Point Cloud handling -->
 
+    <node name="lidar_frame" pkg="lidar-frame" type="lidar-frame" output="screen" />
     <group ns="$(arg camera_model)">
         <!-- Nodelet Manager -->
         <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager" output="screen" />
-
         <node pkg="nodelet" type="nodelet" name="pointcloud_to_laserscan" args="load pointcloud_to_laserscan/pointcloud_to_laserscan_nodelet $(arg nodelet_manager_name)">
             <param name="min_height" value="-1.0" />
             <param name="max_height" value="1.0" />
@@ -20,8 +58,7 @@
             <param name="angle_increment" value="3.14/360" />
             <param name="range_min" value="0.3" />
             <param name="range_max" value="20.0" />
-            <param name="target_frame" value="lidar_frame" /> 
-
+            <param name="target_frame" value="lidar_frame" />
             <remap from="cloud_in" to="/output" />
         </node>
     </group>

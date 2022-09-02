@@ -10,8 +10,10 @@ int main(int argc, char **argv)
     tf::Transform transform;
 
     ros::Rate rate(10.0);
+
     while (node.ok())
     {
+
         transform.setOrigin(tf::Vector3(0.0, 0.0, 0.0));
         transform.setRotation(tf::createQuaternionFromRPY(-M_PI / 2, 0, 0));
         br.sendTransform(tf::StampedTransform(transform, ros::Time::now(), "zed2_left_camera_frame", "lidar_frame"));
