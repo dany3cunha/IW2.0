@@ -7,8 +7,8 @@ This package create a virtual LIDAR using the pointcloud of a ZED2 camera.
 - Ubuntu 18.04
 - [ZED SDK **≥ 3.7**](https://www.stereolabs.com/developers/) and its dependency [CUDA](https://developer.nvidia.com/cuda-downloads)
 - [ROS Melodic](http://wiki.ros.org/melodic/Installation/Ubuntu)
-- [OpenCV] (https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html)
-- [PCL] (https://pointclouds.org/downloads/)
+- [OpenCV](https://docs.opencv.org/4.x/d7/d9f/tutorial_linux_install.html)
+- [PCL](https://pointclouds.org/downloads/)
 
 #### Instalation
 
