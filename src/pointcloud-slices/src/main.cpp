@@ -10,6 +10,7 @@
 #include <cmath>
 
 #define relative_height_default 0.2
+#define relative_starting_default 0.1
 using namespace std;
 
 ros::Publisher pub;
@@ -22,6 +23,7 @@ double danger_zone = 0.8;
 bool static_height = false;
 double static_height_val = 1.0;
 double relative_height = relative_height_default;
+double relative_starting_height = relative_starting_default;
 
 /**
  * @brief At start read the params from the launch file
@@ -219,6 +221,9 @@ void readROSparams()
 
   if (ros::param::has("/static_height_value"))
     ros::param::get("/static_height_value", static_height_val);
+
+  if (ros::param::has("/relative_starting_height"))
+    ros::param::get("/relative_starting_height", relative_starting_height);
 
   if (ros::param::has("/relative_height_value") && !static_height)
   {

@@ -23,7 +23,7 @@
     <param name="planeDuration" type="int" value="1" /> <!--plane duration on rviz publication in seconds -->
     <param name="open_exposure" type="int" value="10" /> <!--inital exposure in opening camera -->
     <param name="open_gain" type="int" value="10" /> <!--constant pretended gain -->
-    <param name="use_MEC" type="bool" value="true" /> <!-- Use manual exposure control while ZED SDK don't fix auto exposure control for local streaming -->
+    <param name="use_MEC" type="bool" value="true" /> <!-- Use manual exposure control while ZED SDK doesn't fix auto exposure control for local streaming -->
     <param name="minExposure" type="double" value="0.05" /> <!--minimal exposure percentage, if lower than this value then exposure increase -->
     <param name="maxExposure" type="double" value="5.00" /> <!--maximum exposure percentage, if grater than this value then exposure decreases -->
     <param name="printExposureInfo" type="bool" value="false" /> <!-- Print exposure value when it changes-->
@@ -38,6 +38,7 @@
     <param name="safe_zone" type="double" value="1.3" /> <!-- default: 1.3 m -->
     <param name="danger_zone" type="double" value="0.8" /> <!-- default: 0.8 m -->
     <param name="distance_between_slices" type="double" value="0.05" /> <!-- default: 0.05 -->
+    <param name="relative_starting_height" type="double" value="0.1" /> <!-- default: 0.1 value:]0.0;1.0[ -->
     <param name="static_height" type="bool" value="false" /> <!-- default: false-->
     <param name="static_height_value" type="double" value="1.0" />
     <param name="relative_height_value" type="double" value="0.2" /> <!-- default: 0.2 value:]0.0;1.0[ -->
