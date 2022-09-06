@@ -99,7 +99,7 @@ sensor_msgs::PointCloud2 create_PointCloudSlices(pcl::PointCloud<pcl::PointXYZRG
   double plane_coef_d = current_planeCoefs.at(3);
 
   double init_OFFSET = (1 + relative_height) * plane_coef_d;
-  double curr_OFFSET = -plane_coef_d + 0.10 * init_OFFSET;
+  double curr_OFFSET = -plane_coef_d + relative_starting_height * init_OFFSET;
   if (static_height)
   {
     init_OFFSET = static_height_val;
@@ -233,4 +233,6 @@ void readROSparams()
   }
   if (ros::param::has("/use_voxelgrid"))
     ros::param::get("/use_voxelgrid", use_VoxelGrid);
+
+  std::cout << std::endl << std::endl << relative_starting_height << std::endl << std::endl;
 }
